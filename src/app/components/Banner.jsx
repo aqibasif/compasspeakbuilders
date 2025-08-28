@@ -8,13 +8,20 @@ const Banner = ({
   subHeading1 = "sub Heading 1",
   subHeading2 = "sub Heading 2",
   heading = "Heading",
+  backgroundImage = "",
 }) => {
   return (
     <Box>
-      <div
+      <Box
         className={`image-text-overlay ${
           centerHeading ? "text-middle-center" : "text-middle-left"
         } `}
+        sx={{
+          backgroundImage: `url(${backgroundImage.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <Box className="content-box">
           <Box
@@ -106,11 +113,11 @@ const Banner = ({
                       },
                     }}
                   >
-                    <Link href="/contact">CUSTOM HOMES</Link>
+                    <Link href="/services/#custom-home">CUSTOM HOMES</Link>
                     <Divider orientation="vertical" variant="middle" flexItem />
-                    <Link href="/contact">remodel</Link>
+                    <Link href="/services/#remodel">remodel</Link>
                     <Divider orientation="vertical" variant="middle" flexItem />
-                    <Link href="/contact">home care</Link>
+                    <Link href="/services/#home-care">home care</Link>
                   </Box>
                 </Box>
               </>
@@ -118,7 +125,7 @@ const Banner = ({
           </Box>
         </Box>
         <div className="overlay-white"></div>
-      </div>
+      </Box>
     </Box>
   );
 };

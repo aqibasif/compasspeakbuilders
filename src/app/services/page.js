@@ -1,8 +1,16 @@
+import Banner from "../components/Banner";
+import ServicesSection from "../components/ServicesSection";
+import bannerImage from "../uploads/services-banner.jpg";
+
 export default function Services() {
   return (
-    <div>
-      <h1>Our Services</h1>
-      <p>Welcome to our services page!</p>
-    </div>
+    <>
+      <Banner
+        backgroundImage={bannerImage}
+        heading="our services"
+        centerHeading
+      />
+      <ServicesSection />
+    </>
   );
 }

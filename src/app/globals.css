@@ -15,6 +15,8 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 80px;
 }
 
 * {
@@ -34,8 +36,6 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  background-image: url("./uploads/banner.jpg");
-  background-position: center;
   &.text-white {
     color: white;
   }
@@ -98,6 +98,7 @@ a {
   }
   .overlay-white {
     background: #fff;
+    opacity: 0.64;
   }
 }
 .text-top-left,
