@@ -129,3 +129,22 @@ a {
   vertical-align: middle;
   text-align: center;
 }
+
+.overlay-subtext-tagline {
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 7.1px;
+  font-family: var(--font-raleway), sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  word-spacing: 0;
+  color: "#141414";
+  @media screen and (max-width: 768px) {
+    font-size: 1.1rem;
+    line-height: 30px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}

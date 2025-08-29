@@ -9,6 +9,7 @@ const Banner = ({
   subHeading2 = "sub Heading 2",
   heading = "Heading",
   backgroundImage = "",
+  centerHeadingWithTagLine = false,
 }) => {
   return (
     <Box>
@@ -40,6 +41,10 @@ const Banner = ({
                 {subHeading2}
               </span>
             )}
+            {centerHeadingWithTagLine && (
+              <span className={`overlay-subtext-tagline`}>{subHeading1}</span>
+            )}
+
             <span
               className={`overlay-subtext ${
                 centerHeading ? "large-text" : "medium-text"
