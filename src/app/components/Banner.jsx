@@ -1,7 +1,14 @@
+"use client";
 import { Box, Button, Divider } from "@mui/material";
-import React from "react";
+import React, { useRef } from "react";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import Link from "next/link";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import SplitType from "split-type";
+
+// Register GSAP plugin
+gsap.registerPlugin(useGSAP);
 
 const Banner = ({
   centerHeading = false,
@@ -11,8 +18,75 @@ const Banner = ({
   backgroundImage = "",
   centerHeadingWithTagLine = false,
 }) => {
+  const banner = useRef();
+
+  useGSAP(
+    () => {
+      const titleText = new SplitType(".overlay-title", {
+        types: "lines",
+        tagName: "div",
+        lineClass: "line",
+      });
+
+      const taglineText = new SplitType(".overlay-subtext-tagline", {
+        types: "lines",
+        tagName: "div",
+        lineClass: "line",
+      });
+
+      const subtextText = new SplitType(".overlay-subtext", {
+        types: "lines",
+        tagName: "div",
+        lineClass: "line",
+      });
+
+      // Animate the links
+      const linksText = new SplitType(".animated-link", {
+        types: "lines",
+        tagName: "div",
+        lineClass: "line",
+      });
+
+      // Process all animated elements
+      const allTextElements = [
+        ...(titleText.lines || []),
+        ...(taglineText.lines || []),
+        ...(subtextText.lines || []),
+        ...(linksText.lines || []),
+      ];
+
+      allTextElements.forEach((line) => {
+        const content = line.innerHTML;
+        line.innerHTML = `<span>${content}</span>`;
+      });
+
+      // Set initial state
+      gsap.set(".line span", {
+        y: 400,
+        display: "block",
+      });
+
+      // Animate all elements
+      gsap.to(".line span", {
+        y: 0,
+        duration: 2,
+        stagger: 0.075,
+        ease: "power4.out",
+        delay: 0.25,
+      });
+
+      return () => {
+        if (titleText) titleText.revert();
+        if (taglineText) taglineText.revert();
+        if (subtextText) subtextText.revert();
+        if (linksText) linksText.revert();
+      };
+    },
+    { scope: banner }
+  );
+
   return (
-    <Box>
+    <Box ref={banner}>
       <Box
         className={`image-text-overlay ${
           centerHeading ? "text-middle-center" : "text-middle-left"
@@ -42,7 +116,7 @@ const Banner = ({
               </span>
             )}
             {centerHeadingWithTagLine && (
-              <span className={`overlay-subtext-tagline`}>{subHeading1}</span>
+              <span className="overlay-subtext-tagline">{subHeading1}</span>
             )}
 
             <span
@@ -118,11 +192,20 @@ const Banner = ({
                       },
                     }}
                   >
-                    <Link href="/services/#custom-home">CUSTOM HOMES</Link>
+                    <Link
+                      href="/services/#custom-home"
+                      className="animated-link"
+                    >
+                      CUSTOM HOMES
+                    </Link>
                     <Divider orientation="vertical" variant="middle" flexItem />
-                    <Link href="/services/#remodel">remodel</Link>
+                    <Link href="/services/#remodel" className="animated-link">
+                      remodel
+                    </Link>
                     <Divider orientation="vertical" variant="middle" flexItem />
-                    <Link href="/services/#home-care">home care</Link>
+                    <Link href="/services/#home-care" className="animated-link">
+                      home care
+                    </Link>
                   </Box>
                 </Box>
               </>

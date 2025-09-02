@@ -12,11 +12,52 @@ import { useState } from "react";
 import Logo from "../uploads/compass-logo.png";
 import CloseIcon from "@mui/icons-material/Close";
 import SegmentIcon from "@mui/icons-material/Segment";
+import { useTransitionRouter } from "next-view-transitions";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const router = useTransitionRouter();
+
+  function slideInOut() {
+    document.documentElement.animate(
+      [
+        {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+        {
+          opacity: 0.2,
+          transform: "translateY(-35%)",
+        },
+      ],
+      {
+        duration: 1500,
+        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-old(root)",
+      }
+    );
+
+    document.documentElement.animate(
+      [
+        {
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        },
+        {
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        },
+      ],
+      {
+        duration: 1500,
+        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -55,7 +96,15 @@ export default function Navbar() {
         }}
       >
         <Box></Box>
-        <Link href="/">
+        <Link
+          onClick={(e) => {
+            e.preventDefault();
+            router.push("/", {
+              onTransitionReady: slideInOut,
+            });
+          }}
+          href="/"
+        >
           <Image
             src={Logo}
             alt="Logo"
@@ -112,7 +161,14 @@ export default function Navbar() {
             key={item.name}
             href={item.path}
             className="link"
-            onClick={handleDrawerToggle}
+            onClick={(e) => {
+              e.preventDefault();
+              router.push(item.path, {
+                onTransitionReady: slideInOut,
+              });
+              handleDrawerToggle();
+            }}
+            // onClick={handleDrawerToggle}
           >
             {item.name}
           </Link>
@@ -149,7 +205,15 @@ export default function Navbar() {
                 },
               }}
             >
-              <Link href="/">
+              <Link
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/", {
+                    onTransitionReady: slideInOut,
+                  });
+                }}
+                href="/"
+              >
                 <Image src={Logo} alt="Logo" className="logo" />
               </Link>
             </Box>
@@ -202,7 +266,17 @@ export default function Navbar() {
               }}
             >
               {navigationItems.map((item) => (
-                <Link key={item.name} href={item.path} className="link">
+                <Link
+                  key={item.name}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    router.push(item.path, {
+                      onTransitionReady: slideInOut,
+                    });
+                  }}
+                  href={item.path}
+                  className="link"
+                >
                   {item.name}
                 </Link>
               ))}
@@ -230,7 +304,15 @@ export default function Navbar() {
                 },
               }}
             >
-              <Link href="/">
+              <Link
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/", {
+                    onTransitionReady: slideInOut,
+                  });
+                }}
+                href="/"
+              >
                 <Image src={Logo} alt="Logo" className="logo" />
               </Link>
             </Box>
@@ -250,8 +332,6 @@ export default function Navbar() {
           </Box>
         )}
       </Box>
-
-      {}
 
       {/* Mobile drawer */}
       <Drawer

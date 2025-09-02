@@ -4,6 +4,7 @@ import ContactBannerImage from "../uploads/contact-us-bg.png";
 import PhoneEnabledRoundedIcon from "@mui/icons-material/PhoneEnabledRounded";
 import MailRoundedIcon from "@mui/icons-material/MailRounded";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
+import TextAnimationWrapper from "../components/TextAnimationWrapper";
 
 export default function Contact() {
   return (
@@ -17,16 +18,14 @@ export default function Contact() {
         sx={{
           position: "relative",
           px: "20px",
-          "& span": {
+          "& .transparent-text": {
             fontSize: "130px",
             fontWeight: 800,
             color: "#000000",
             textTransform: "uppercase",
-            position: "absolute",
             textAlign: "center",
             mx: "auto",
             width: "100%",
-            top: "0px",
             opacity: 0.03,
             "@media (max-width: 1000px)": {
               fontSize: "80px",
@@ -37,14 +36,17 @@ export default function Contact() {
           },
         }}
       >
-        <Typography variant="span" className="raleway-font">
-          get in touch
-        </Typography>
+        <TextAnimationWrapper>
+          <Typography className="raleway-font transparent-text">
+            get in touch
+          </Typography>
+        </TextAnimationWrapper>
         <Box
           sx={{
             maxWidth: "1250px",
             mx: "auto",
-            py: "110px",
+            mt: "-100px",
+            pb: "110px",
             position: "relative",
             bgcolor: "inherit",
             "@media (max-width: 1000px)": {
@@ -67,13 +69,15 @@ export default function Contact() {
             },
           }}
         >
-          <Typography variant="h4" className="raleway-font">
-            Contact Details
-          </Typography>
-          <Typography className="roboto-font">
-            It’s never too early or too late to reach out – we’d love to see how
-            we can help!
-          </Typography>
+          <TextAnimationWrapper>
+            <Typography variant="h4" className="raleway-font">
+              Contact Details
+            </Typography>
+            <Typography className="roboto-font">
+              It’s never too early or too late to reach out – we’d love to see
+              how we can help!
+            </Typography>
+          </TextAnimationWrapper>
 
           <Box
             sx={{

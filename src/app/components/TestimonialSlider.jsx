@@ -3,6 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import TextAnimationWrapper from "./TextAnimationWrapper";
 
 // Styled components
 const TestimonialCard = styled(Box)(({ theme }) => ({
@@ -113,28 +114,30 @@ const TestimonialSlider = ({
   return (
     <SliderContainer>
       <Box sx={{ textAlign: "center", mb: 6 }}>
-        <Typography
-          variant="overline"
-          className="raleway-font"
-          sx={{
-            color: "#141414",
-            fontWeight: 600,
-            letterSpacing: 1.5,
-            fontSize: "12px",
-            mb: 1,
-          }}
-        >
-          {subtitle}
-        </Typography>
-        <Typography
-          variant="h3"
-          sx={{
-            fontWeight: "bold",
-            color: "text.primary",
-          }}
-        >
-          {title}
-        </Typography>
+        <TextAnimationWrapper>
+          <Typography
+            variant="overline"
+            className="raleway-font"
+            sx={{
+              color: "#141414",
+              fontWeight: 600,
+              letterSpacing: 1.5,
+              fontSize: "12px",
+              mb: 1,
+            }}
+          >
+            {subtitle}
+          </Typography>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: "bold",
+              color: "text.primary",
+            }}
+          >
+            {title}
+          </Typography>
+        </TextAnimationWrapper>
       </Box>
 
       <Box sx={{ maxWidth: "lg", mx: "auto", px: { xs: 2, sm: 3, md: 4 } }}>
@@ -142,33 +145,35 @@ const TestimonialSlider = ({
           {testimonials.map((testimonial, index) => (
             <Box key={index} sx={{ outline: "none" }}>
               <TestimonialCard>
-                <Typography
-                  variant="body1"
-                  className="raleway-font"
-                  sx={{
-                    mb: "30px",
-                    fontSize: "16px",
-                    fontStyle: "italic",
-                    lineHeight: "1.5",
-                    color: "#373737",
-                  }}
-                >
-                  "{testimonial.content}"
-                </Typography>
-                <Typography
-                  variant="h6"
-                  className="roboto-font"
-                  sx={{ fontWeight: "bold", fontSize: "14px" }}
-                >
-                  {testimonial.name}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ fontWeight: 400, fontSize: "12px" }}
-                >
-                  {testimonial.role}
-                </Typography>
+                <TextAnimationWrapper>
+                  <Typography
+                    variant="body1"
+                    className="raleway-font"
+                    sx={{
+                      mb: "30px",
+                      fontSize: "16px",
+                      fontStyle: "italic",
+                      lineHeight: "1.5",
+                      color: "#373737",
+                    }}
+                  >
+                    "{testimonial.content}"
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    className="roboto-font"
+                    sx={{ fontWeight: "bold", fontSize: "14px" }}
+                  >
+                    {testimonial.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontWeight: 400, fontSize: "12px" }}
+                  >
+                    {testimonial.role}
+                  </Typography>
+                </TextAnimationWrapper>
               </TestimonialCard>
             </Box>
           ))}

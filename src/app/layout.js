@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ViewTransitions } from "next-view-transitions";
+import { ReactLenis } from "lenis/react";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -30,14 +32,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${raleway.variable} ${roboto.variable}`}>
-      <body className={raleway.className}>
-        <MUIThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </MUIThemeProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" className={`${raleway.variable} ${roboto.variable}`}>
+        <body className={raleway.className}>
+          <ReactLenis root />
+          <MUIThemeProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </MUIThemeProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

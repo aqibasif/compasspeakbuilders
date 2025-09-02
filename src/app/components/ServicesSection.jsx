@@ -11,6 +11,7 @@ import ConceptHomeImage from "@/app/uploads/custom-homes.jpg";
 import RemodelImage from "@/app/uploads/remodel.jpg";
 import HomeCareImage from "@/app/uploads/home-care.jpg";
 import Image from "next/image";
+import TextAnimationWrapper from "./TextAnimationWrapper";
 
 const ServicesSection = () => {
   const theme = useTheme();
@@ -82,12 +83,16 @@ const ServicesSection = () => {
                     },
                   }}
                 >
-                  <Typography variant="h2" className="raleway-font">
-                    {section.title}
-                  </Typography>
-                  <Typography variant="p" className="roboto-font">
-                    {section.content}
-                  </Typography>
+                  <TextAnimationWrapper className="title">
+                    <Typography variant="h2" className="raleway-font">
+                      {section.title}
+                    </Typography>
+                  </TextAnimationWrapper>
+                  <TextAnimationWrapper className="content">
+                    <Typography variant="p" className="roboto-font">
+                      {section.content}
+                    </Typography>
+                  </TextAnimationWrapper>
                 </Box>
               </Box>
 
