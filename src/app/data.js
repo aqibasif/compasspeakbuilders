@@ -32,3 +32,30 @@ export const testimonials = [
       "Their home care maintenance service has been invaluable. Regular inspections have helped us catch issues early, saving thousands in potential repairs.",
   },
 ];
+
+export const NavItems = [
+  {
+    label: "Home",
+    bgColor: "#cececeac",
+    textColor: "#000000",
+    href: "/",
+  },
+  {
+    label: "Services",
+    bgColor: "#cececeac",
+    textColor: "#000000",
+    href: "/services",
+  },
+  {
+    label: "About",
+    bgColor: "#cececeac",
+    textColor: "#000000",
+    href: "/about-compass-peak-builders",
+  },
+  {
+    label: "Contact",
+    bgColor: "#cececeac",
+    textColor: "#000000",
+    href: "/contact",
+  },
+];
