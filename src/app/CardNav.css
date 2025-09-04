@@ -75,7 +75,8 @@
 }
 
 .logo {
-  height: 28px;
+  height: 50px;
+  width: 90px;
 }
 
 .card-nav-cta-button {
@@ -131,9 +132,8 @@
 }
 
 .nav-card-label {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 22px;
-  letter-spacing: -0.5px;
 }
 
 .nav-card-links {

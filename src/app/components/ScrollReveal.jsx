@@ -3,6 +3,7 @@ import { useEffect, useRef, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../ScrollReveal.css";
+import { Box } from "@mui/material";
 
 gsap.registerPlugin(ScrollTrigger);
 

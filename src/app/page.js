@@ -4,8 +4,8 @@ import TestimonialSlider from "./components/TestimonialSlider";
 import { testimonials } from "./data";
 import styles from "./page.module.css";
 import Typography from "@mui/material/Typography";
-import BannerImage from "./uploads/banner.jpg";
 import TextAnimationWrapper from "./components/TextAnimationWrapper";
+import { HomeBanner } from "./Utils/images";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         subHeading1="CONSTRUCTION DONE RIGHT."
         subHeading2="WE BUILD DIFFERENT SO YOU CAN"
         heading="REST EASY"
-        backgroundImage={BannerImage}
+        backgroundImage={HomeBanner}
       />
       <Box sx={{ maxWidth: "1240px", mx: "auto", my: 6, textAlign: "center" }}>
         <TextAnimationWrapper>

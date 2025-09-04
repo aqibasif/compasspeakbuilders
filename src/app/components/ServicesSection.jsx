@@ -12,6 +12,7 @@ import RemodelImage from "@/app/uploads/remodel.jpg";
 import HomeCareImage from "@/app/uploads/home-care.jpg";
 import Image from "next/image";
 import TextAnimationWrapper from "./TextAnimationWrapper";
+import ScrollReveal from "./ScrollReveal";
 
 const ServicesSection = () => {
   const theme = useTheme();
@@ -88,11 +89,15 @@ const ServicesSection = () => {
                       {section.title}
                     </Typography>
                   </TextAnimationWrapper>
-                  <TextAnimationWrapper className="content">
-                    <Typography variant="p" className="roboto-font">
-                      {section.content}
-                    </Typography>
-                  </TextAnimationWrapper>
+                  <ScrollReveal
+                    baseOpacity={0}
+                    enableBlur={true}
+                    baseRotation={0}
+                    blurStrength={0}
+                    containerClassName="card-content roboto-font"
+                  >
+                    {section.content}
+                  </ScrollReveal>
                 </Box>
               </Box>
 

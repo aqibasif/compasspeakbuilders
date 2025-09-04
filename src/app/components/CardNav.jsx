@@ -6,6 +6,7 @@ import "../CardNav.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useTransitionRouter } from "next-view-transitions";
+import BannerImage from "../uploads/banner.jpg";
 
 const CardNav = ({
   logo,
@@ -184,7 +185,9 @@ const CardNav = ({
       <nav
         ref={navRef}
         className={`card-nav ${isExpanded ? "open" : ""}`}
-        style={{ backgroundColor: baseColor }}
+        style={{
+          backgroundColor: baseColor,
+        }}
       >
         <div className="card-nav-top">
           <div
@@ -208,14 +211,6 @@ const CardNav = ({
               width={50}
             />
           </div>
-
-          <button
-            type="button"
-            className="card-nav-cta-button"
-            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-          >
-            Get Started
-          </button>
         </div>
 
         <div className="card-nav-content" aria-hidden={!isExpanded}>
@@ -224,8 +219,14 @@ const CardNav = ({
               key={`${item.label}-${idx}`}
               className="nav-card"
               ref={setCardRef(idx)}
-              style={{ backgroundColor: item.bgColor, color: item.textColor }}
+              style={{
+                backgroundImage: `linear-gradient(rgba(33, 27, 25, 0.4), rgba(33, 27, 25, 0.4)), url(${item.img.src})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                color: item.textColor,
+              }}
               onClick={(e) => {
+                toggleMenu();
                 e.preventDefault();
                 router.push(item?.href, {
                   onTransitionReady: slideInOut,
@@ -233,42 +234,6 @@ const CardNav = ({
               }}
             >
               <div className="nav-card-label">{item.label}</div>
-              {/* <div className="nav-card-links">
-                {item.links?.map((lnk, i) =>
-                  lnk?.href ? (
-                    <Link
-                      key={`${lnk.label}-${i}`}
-                      className="nav-card-link"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        router.push(lnk?.href, {
-                          onTransitionReady: slideInOut,
-                        });
-                      }}
-                      href={lnk?.href}
-                      aria-label={lnk.ariaLabel}
-                    >
-                      {lnk?.href && (
-                        <NorthEastRoundedIcon
-                          className="nav-card-link-icon"
-                          aria-hidden="true"
-                        />
-                      )}
-                      {lnk.label}
-                    </Link>
-                  ) : (
-                    <div className="nav-card-link" key={`${lnk.label}-${i}`}>
-                      {lnk?.href && (
-                        <NorthEastRoundedIcon
-                          className="nav-card-link-icon"
-                          aria-hidden="true"
-                        />
-                      )}
-                      <p className="nav-card-link"> {lnk.label}</p>
-                    </div>
-                  )
-                )}
-              </div> */}
             </div>
           ))}
         </div>

@@ -60,20 +60,38 @@ const Banner = ({
         line.innerHTML = `<span>${content}</span>`;
       });
 
-      // Set initial state
+      // Set initial state for text
       gsap.set(".line span", {
         y: 400,
         display: "block",
       });
 
-      // Animate all elements
-      gsap.to(".line span", {
-        y: 0,
-        duration: 2,
-        stagger: 0.075,
-        ease: "power4.out",
-        delay: 0.25,
+      // Set initial state for background image
+      gsap.set(".image-text-overlay-2", {
+        scale: 1.25,
       });
+
+      // Create a timeline for coordinated animations
+      const tl = gsap.timeline();
+
+      // Animate background image scale
+      tl.to(".image-text-overlay-2", {
+        scale: 1,
+        duration: 1.2,
+        ease: "cubic-bezier(0, 0.01, 0.01, 1)",
+      });
+
+      // Animate text elements
+      tl.to(
+        ".line span",
+        {
+          y: 0,
+          duration: 2,
+          stagger: 0.075,
+          ease: "power4.out",
+        },
+        0.25
+      ); // Start text animation 0.25s after timeline begins
 
       return () => {
         if (titleText) titleText.revert();
@@ -96,19 +114,24 @@ const Banner = ({
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          overflow: "hidden",
         }}
       >
         <Box className="content-box">
           <Box
             sx={{
-              maxWidth: "1400px",
+              maxWidth: "1240px",
+              px: "16px",
               mx: "auto",
               display: "flex",
               flexDirection: "column",
               gap: "8px",
               position: "relative",
+              justifyContent: !centerHeading ? "space-between" : "center",
+              height: "100%",
             }}
           >
+            {!centerHeading && <Box></Box>}
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {centerHeadingWithTagLine && (
                 <span className="overlay-subtext-tagline">{subHeading1}</span>
@@ -130,115 +153,127 @@ const Banner = ({
                 {heading}
               </span>
             </Box>
-          </Box>
-          {!centerHeading && (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                rowGap: "10px",
-                position: "absolute",
-                left: "60px",
-                right: "40px",
-                bottom: "40px",
-                "@media (max-width: 768px)": {
-                  left: "20px",
-                },
-                "@media (max-width: 500px)": {
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                },
-              }}
-            >
+            {!centerHeading && (
               <Box
-                className=""
                 sx={{
-                  "& button": {
-                    backgroundColor: "#FFFFFF",
-                    color: "#141414",
-                    fontSize: "17px",
-                    fontWeight: 500,
-                    textTransform: "capitalize",
-                    borderRadius: "20px",
-                    padding: "8px 10px 8px 20px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                    border: "none",
-                    fontFamily: "'Poppins', sans-serif",
-                    "&:hover": {
-                      backgroundColor: "#FFFFFF",
-                    },
-                    "& svg": {
-                      height: "27px",
-                      width: "27px",
-                      backgroundColor: "#000000",
-                      color: "#FFF",
-                      borderRadius: "50%",
-                    },
-                    "@media screen and (max-width: 768px)": {
-                      fontSize: "12px",
-                      padding: "5px 10px 5px 10px",
-                    },
+                  display: "flex",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  rowGap: "10px",
+                  "@media (max-width: 768px)": {
+                    left: "20px",
+                  },
+                  "@media (max-width: 500px)": {
+                    flexDirection: "column",
+                    alignItems: "flex-start",
                   },
                 }}
               >
-                <Button className="poppins-font">
-                  Let's Get Started
-                  <KeyboardArrowRightRoundedIcon fontSize={"small"} />
-                </Button>
-              </Box>
-              <Box>
                 <Box
+                  className=""
                   sx={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    flexWrap: "wrap",
-                    rowGap: "10px",
-                    justifyContent: "center",
-                    width: "100%",
-                    columnGap: "20px",
-                    "@media (max-width: 768px)": {
-                      columnGap: "5px",
-                    },
-                    "@media (max-width: 500px)": {
-                      flexDirection: "column",
-                      alignItems: "normal",
-                    },
-                    "& a": {
-                      backgroundColor: "#ffffff30",
-                      textDecoration: "none",
-                      textTransform: "capitalize",
-                      color: "#FFFFFF",
-                      fontSize: "18px",
+                    "& button": {
+                      backgroundColor: "#FFFFFF",
+                      color: "#141414",
+                      fontSize: "17px",
                       fontWeight: 500,
-                      p: "8px 20px",
+                      textTransform: "capitalize",
                       borderRadius: "20px",
-                      transition: "all 0.3s ease-in",
+                      padding: "8px 10px 8px 20px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      border: "none",
+                      fontFamily: "'Poppins', sans-serif",
+                      transition: "all 0.5s ease",
                       "&:hover": {
-                        backgroundColor: "#FFFFFF",
-                        color: "#000000",
+                        backgroundColor: "#000000",
+                        color: "#FFF",
+                        "& svg": {
+                          backgroundColor: "#ffffff",
+                          color: "#000",
+                        },
+                      },
+                      "& svg": {
+                        height: "27px",
+                        width: "27px",
+                        backgroundColor: "#000000",
+                        color: "#FFF",
+                        borderRadius: "50%",
+                        transition: "all 0.5s ease",
                       },
                       "@media screen and (max-width: 768px)": {
                         fontSize: "12px",
+                        padding: "5px 10px 5px 10px",
                       },
                     },
                   }}
                 >
-                  <Link href="/services/#custom-home" className="poppins-font">
-                    Custom homes
-                  </Link>
-                  <Link href="/services/#remodel" className="poppins-font">
-                    remodel
-                  </Link>
-                  <Link href="/services/#home-care" className="poppins-font">
-                    home care
-                  </Link>
+                  <Button className="poppins-font">
+                    Let's Get Started
+                    <KeyboardArrowRightRoundedIcon fontSize={"small"} />
+                  </Button>
+                </Box>
+                <Box>
+                  <Box
+                    sx={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      flexWrap: "wrap",
+                      rowGap: "10px",
+                      justifyContent: "center",
+                      width: "100%",
+                      columnGap: "20px",
+                      "@media (max-width: 768px)": {
+                        columnGap: "5px",
+                      },
+                      "@media (max-width: 500px)": {
+                        flexDirection: "column",
+                        alignItems: "normal",
+                      },
+                      "& a": {
+                        backgroundColor: "#ffffff30",
+                        textDecoration: "none",
+                        textTransform: "capitalize",
+                        color: "#FFFFFF",
+                        fontSize: "18px",
+                        fontWeight: 500,
+                        p: "8px 20px",
+                        borderRadius: "20px",
+                        transition: "all 0.3s ease-in",
+                        "&:hover": {
+                          backgroundColor: "#FFFFFF",
+                          color: "#000000",
+                        },
+                        "@media screen and (max-width: 768px)": {
+                          fontSize: "12px",
+                        },
+                      },
+                    }}
+                  >
+                    <Link
+                      href="/services/#custom-home"
+                      className="poppins-font hero-button"
+                    >
+                      Custom homes
+                    </Link>
+                    <Link
+                      href="/services/#remodel"
+                      className="poppins-font hero-button"
+                    >
+                      remodel
+                    </Link>
+                    <Link
+                      href="/services/#home-care"
+                      className="poppins-font hero-button"
+                    >
+                      home care
+                    </Link>
+                  </Box>
                 </Box>
               </Box>
-            </Box>
-          )}
+            )}
+          </Box>
         </Box>
         <div className="overlay-brown"></div>
       </Box>

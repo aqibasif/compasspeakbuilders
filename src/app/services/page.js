@@ -1,17 +1,18 @@
 "use client";
-import Banner from "../components/Banner";
+import { Box } from "@mui/material";
+import Banner from "../components/Banner2";
 import ServicesSection from "../components/ServicesSection";
-import bannerImage from "../uploads/services-banner.jpg";
+import { ServicesBanner } from "../Utils/images";
 
 export default function Services() {
   return (
-    <>
+    <Box className="services-page">
       <Banner
-        backgroundImage={bannerImage}
         heading="our services"
+        backgroundImage={ServicesBanner}
         centerHeading
       />
       <ServicesSection />
-    </>
+    </Box>
   );
 }

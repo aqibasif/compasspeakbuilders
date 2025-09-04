@@ -1,19 +1,20 @@
 import { Box, Typography } from "@mui/material";
-import Banner from "../components/Banner";
-import ContactBannerImage from "../uploads/contact-us-bg.png";
+import Banner from "../components/Banner2";
 import PhoneEnabledRoundedIcon from "@mui/icons-material/PhoneEnabledRounded";
 import MailRoundedIcon from "@mui/icons-material/MailRounded";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import TextAnimationWrapper from "../components/TextAnimationWrapper";
+import { ContactBanner } from "../Utils/images";
 
 export default function Contact() {
   return (
     <Box>
       <Banner
-        backgroundImage={ContactBannerImage}
+        backgroundImage={ContactBanner}
         heading="Contact Us"
         centerHeading
       />
+
       <Box
         sx={{
           position: "relative",
