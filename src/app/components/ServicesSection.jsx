@@ -44,7 +44,7 @@ const ServicesSection = () => {
 
   return (
     <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: "#fafafa" }}>
-      <Container maxWidth="lg">
+      <Box maxWidth="1040px" mx={"auto"}>
         {sections.map((section, index) => {
           const isReversed = index % 2 !== 0;
 
@@ -55,9 +55,10 @@ const ServicesSection = () => {
                 gridTemplateColumns: isMobile
                   ? "1fr"
                   : isReversed
-                  ? "2fr 1fr"
-                  : "1fr 2fr",
+                  ? "1.5fr 1fr"
+                  : "1fr 1.5fr",
                 my: "80px",
+                px: "20px",
               }}
               key={index}
               id={section.id}
@@ -122,7 +123,7 @@ const ServicesSection = () => {
             </Box>
           );
         })}
-      </Container>
+      </Box>
     </Box>
   );
 };

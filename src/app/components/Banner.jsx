@@ -6,6 +6,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
+import Copy from "./Copy";
 
 // Register GSAP plugin
 gsap.registerPlugin(useGSAP);
@@ -34,11 +35,11 @@ const Banner = ({
         lineClass: "line",
       });
 
-      const subtextText = new SplitType(".overlay-subtext", {
-        types: "lines",
-        tagName: "div",
-        lineClass: "line",
-      });
+      // const subtextText = new SplitType(".overlay-subtext", {
+      //   types: "lines",
+      //   tagName: "div",
+      //   lineClass: "line",
+      // });
 
       // Animate the links
       const linksText = new SplitType(".animated-link", {
@@ -51,7 +52,7 @@ const Banner = ({
       const allTextElements = [
         ...(titleText.lines || []),
         ...(taglineText.lines || []),
-        ...(subtextText.lines || []),
+        // ...(subtextText.lines || []),
         ...(linksText.lines || []),
       ];
 
@@ -78,7 +79,7 @@ const Banner = ({
       return () => {
         if (titleText) titleText.revert();
         if (taglineText) taglineText.revert();
-        if (subtextText) subtextText.revert();
+        // if (subtextText) subtextText.revert();
         if (linksText) linksText.revert();
       };
     },
@@ -118,14 +119,15 @@ const Banner = ({
             {centerHeadingWithTagLine && (
               <span className="overlay-subtext-tagline">{subHeading1}</span>
             )}
-
-            <span
-              className={`overlay-subtext ${
-                centerHeading ? "large-text" : "medium-text"
-              }`}
-            >
-              {heading}
-            </span>
+            <Copy byChar>
+              <span
+                className={`overlay-subtext ${
+                  centerHeading ? "large-text" : "medium-text"
+                }`}
+              >
+                {heading}
+              </span>
+            </Copy>
             {!centerHeading && (
               <>
                 <Box

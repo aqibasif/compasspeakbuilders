@@ -19,6 +19,8 @@ export default function Contact() {
         sx={{
           position: "relative",
           px: "20px",
+          maxWidth: "1040px",
+          mx: "auto",
           "& .transparent-text": {
             fontSize: "130px",
             fontWeight: 800,

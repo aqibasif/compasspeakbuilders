@@ -187,7 +187,7 @@ export default function Navbar() {
         {!isMobile ? (
           <Box
             sx={{
-              maxWidth: "1240px",
+              maxWidth: "1040px",
               mx: "auto",
               display: "flex",
               flexDirection: "column",
@@ -288,7 +288,7 @@ export default function Navbar() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              maxWidth: "1240px",
+              maxWidth: "1040px",
               mx: "auto",
               padding: "0 2rem",
             }}

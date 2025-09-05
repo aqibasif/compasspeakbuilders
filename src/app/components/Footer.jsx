@@ -12,7 +12,7 @@ const Footer = () => {
         backgroundColor: "#FFFFFF",
       }}
     >
-      <Box sx={{ maxWidth: "1240px", mx: "auto", px: "16px" }}>
+      <Box sx={{ maxWidth: "1040px", mx: "auto", px: "16px" }}>
         <Box
           sx={{
             "& h2": {

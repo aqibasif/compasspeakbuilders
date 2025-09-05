@@ -91,11 +91,11 @@ a {
     }
   }
   .overlay-subtext.medium-text {
-    font-size: 52px;
+    font-size: 110px;
     line-height: 1.2em;
-    font-family: var(--font-raleway), sans-serif;
+    font-family: var(--poppins-font);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     word-spacing: 0px;
     color: #141414;
     letter-spacing: 10px;
@@ -106,22 +106,25 @@ a {
   .overlay-subtext-2.medium-text {
     font-size: 110px;
     line-height: 1.2em;
-    font-family: var(--font-raleway), sans-serif;
+    font-family: var(--poppins-font);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     word-spacing: 0px;
     color: #ffffff;
-    letter-spacing: 5px;
+    /* letter-spacing: 5px; */
+    @media (max-width: 992px) {
+      font-size: 70px;
+    }
     @media screen and (max-width: 768px) {
       font-size: 42px;
     }
   }
   .overlay-subtext.large-text {
-    font-size: 4.5rem;
+    font-size: 110px;
     line-height: 1.2em;
-    font-family: var(--font-raleway), sans-serif;
+    font-family: var(--poppins-font);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     word-spacing: 0px;
     color: "#141414";
     letter-spacing: 5px;
@@ -130,14 +133,16 @@ a {
     }
   }
   .overlay-subtext-2.large-text {
-    font-size: 4.5rem;
+    font-size: 110px;
     line-height: 1.2em;
-    font-family: var(--font-raleway), sans-serif;
+    font-family: var(--poppins-font);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     word-spacing: 0px;
     color: "#FFF";
-    letter-spacing: 4.2px;
+    @media (max-width: 992px) {
+      font-size: 70px;
+    }
     @media screen and (max-width: 768px) {
       font-size: 42px;
     }
@@ -196,9 +201,11 @@ a {
     letter-spacing: 1px;
     word-spacing: 0;
     color: #ffffff !important;
+    padding-left: 8px;
     @media screen and (max-width: 768px) {
       font-size: 1.1rem;
       line-height: 30px;
+      padding-left: 0px;
     }
     @media screen and (max-width: 500px) {
       font-size: 12px;
@@ -206,11 +213,11 @@ a {
     }
   }
   .overlay-subtext.medium-text {
-    font-size: 52px;
+    font-size: 110px;
     line-height: 1.2em;
     font-family: var(--poppins-font);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     word-spacing: 0px;
     color: "#141414";
     letter-spacing: 10px;
@@ -226,33 +233,38 @@ a {
     font-weight: 500;
     word-spacing: 0px;
     color: #ffffff;
-    letter-spacing: 5px;
+    /* letter-spacing: 5px; */
+    @media (max-width: 992px) {
+      font-size: 70px;
+    }
     @media screen and (max-width: 768px) {
       font-size: 42px;
     }
   }
   .overlay-subtext.large-text {
-    font-size: 4.5rem;
+    font-size: 110px;
     line-height: 1.2em;
     font-family: var(--poppins-font);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     word-spacing: 0px;
     color: #141414;
-    letter-spacing: 5px;
+    /* letter-spacing: 5px; */
     @media screen and (max-width: 768px) {
       font-size: 42px;
     }
   }
   .overlay-subtext-2.large-text {
-    font-size: 4.5rem;
+    font-size: 110px;
     line-height: 1.2em;
-    font-family: var(--font-raleway), sans-serif;
+    font-family: var(--poppins-font);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     word-spacing: 0px;
     color: #fff;
-    letter-spacing: 4.2px;
+    @media (max-width: 992px) {
+      font-size: 70px;
+    }
     @media screen and (max-width: 768px) {
       font-size: 42px;
     }
@@ -286,7 +298,7 @@ a {
 .text-bottom-right,
 .text-bottom-center {
   display: table;
-  max-width: "1240px";
+  max-width: "1040px";
   margin: 0 auto;
   .content-box {
     display: table-cell;
@@ -308,10 +320,10 @@ a {
 .overlay-subtext-tagline {
   font-size: 30px;
   text-transform: uppercase;
-  letter-spacing: 7.1px;
-  font-family: var(--font-raleway), sans-serif;
+  letter-spacing: 4px;
+  font-family: var(--poppins-font);
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
   word-spacing: 0;
   color: #ffffff;
   @media screen and (max-width: 768px) {

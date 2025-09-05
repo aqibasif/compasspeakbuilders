@@ -6,6 +6,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
+import Copy from "./Copy";
 
 // Register GSAP plugin
 gsap.registerPlugin(useGSAP);
@@ -34,11 +35,11 @@ const Banner = ({
         lineClass: "line",
       });
 
-      const subtextText = new SplitType(".overlay-subtext-2", {
-        types: "lines",
-        tagName: "div",
-        lineClass: "line",
-      });
+      // const subtextText = new SplitType(".overlay-subtext-2", {
+      //   types: "lines",
+      //   tagName: "div",
+      //   lineClass: "line",
+      // });
 
       // Animate the links
       const linksText = new SplitType(".animated-link", {
@@ -51,7 +52,7 @@ const Banner = ({
       const allTextElements = [
         ...(titleText.lines || []),
         ...(taglineText.lines || []),
-        ...(subtextText.lines || []),
+        // ...(subtextText.lines || []),
         ...(linksText.lines || []),
       ];
 
@@ -96,7 +97,7 @@ const Banner = ({
       return () => {
         if (titleText) titleText.revert();
         if (taglineText) taglineText.revert();
-        if (subtextText) subtextText.revert();
+        // if (subtextText) subtextText.revert();
         if (linksText) linksText.revert();
       };
     },
@@ -120,8 +121,7 @@ const Banner = ({
         <Box className="content-box">
           <Box
             sx={{
-              maxWidth: "1240px",
-              px: "16px",
+              maxWidth: "1040px",
               mx: "auto",
               display: "flex",
               flexDirection: "column",
@@ -144,24 +144,27 @@ const Banner = ({
                   {subHeading2}
                 </span>
               )}
-
-              <span
-                className={`overlay-subtext-2 ${
-                  centerHeading ? "large-text" : "medium-text"
-                }`}
-              >
-                {heading}
-              </span>
+              <Copy byChar>
+                <span
+                  className={`overlay-subtext-2 ${
+                    centerHeading ? "large-text" : "medium-text"
+                  }`}
+                >
+                  {heading}
+                </span>
+              </Copy>
             </Box>
             {!centerHeading && (
               <Box
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
+                  alignItems: "center",
                   flexWrap: "wrap",
                   rowGap: "10px",
+                  pl: "8px",
                   "@media (max-width: 768px)": {
-                    left: "20px",
+                    pl: "0px",
                   },
                   "@media (max-width: 500px)": {
                     flexDirection: "column",
@@ -223,7 +226,7 @@ const Banner = ({
                       rowGap: "10px",
                       justifyContent: "center",
                       width: "100%",
-                      columnGap: "20px",
+                      columnGap: "15px",
                       "@media (max-width: 768px)": {
                         columnGap: "5px",
                       },
@@ -238,7 +241,7 @@ const Banner = ({
                         color: "#FFFFFF",
                         fontSize: "18px",
                         fontWeight: 500,
-                        p: "8px 20px",
+                        p: "9px 20px",
                         borderRadius: "20px",
                         transition: "all 0.3s ease-in",
                         "&:hover": {
