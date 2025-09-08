@@ -172,11 +172,11 @@ const Banner = ({
           opacity: 1,
           scale: 1,
           filter: "blur(0px)",
-          duration: 1.5,
-          stagger: 0.045,
+          duration: 1.35,
+          // stagger: 0.045,
           ease: "power4.out",
           // ease: "elastic.out(1.25, 0.4)",
-          // delay: 0.4,
+          delay: 0.4,
         },
         0.25
       ); // Start text animation 0.25s after timeline begins
