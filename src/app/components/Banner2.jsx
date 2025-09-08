@@ -166,7 +166,7 @@ const Banner = ({
           duration: 1.5,
           stagger: 0.045,
           ease: "elastic.out(1.25, 0.4)",
-          delay: 0.7,
+          delay: 0.75,
         },
         0.25
       ); // Start text animation 0.25s after timeline begins
