@@ -4,6 +4,7 @@ import ContactBanner from "../uploads/contact-us-bg.png";
 import ServicesBanner from "../uploads/services-banner.jpg";
 import Quotes from "../uploads/quotes.png";
 import UseProfile from "../uploads/profile.jpg";
+import Logo from "../uploads/compass-logo.png";
 
 export {
   HomeBanner,
@@ -12,4 +13,5 @@ export {
   ServicesBanner,
   Quotes,
   UseProfile,
+  Logo,
 };

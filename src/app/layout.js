@@ -8,10 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ViewTransitions } from "next-view-transitions";
 import { ReactLenis } from "lenis/react";
-import CardNav from "./components/CardNav";
-import { NavItems } from "./data";
 import { usePathname } from "next/navigation";
-import Logo from "./uploads/compass-logo.png";
 
 const raleway = Raleway({
   subsets: ["latin"],

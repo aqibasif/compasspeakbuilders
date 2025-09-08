@@ -9,11 +9,11 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Logo from "../Uploads/compass-logo.png";
 import CloseIcon from "@mui/icons-material/Close";
 import SegmentIcon from "@mui/icons-material/Segment";
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation"; // Import usePathname
+import { Logo } from "../Utils/images";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
