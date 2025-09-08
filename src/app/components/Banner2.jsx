@@ -165,7 +165,7 @@ const Banner = ({
           filter: "blur(0px)",
           duration: 1.5,
           stagger: 0.045,
-          ease: "elastic.out(1.5, 0.4)",
+          ease: "elastic.out(1.25, 0.4)",
           delay: 0.7,
         },
         0.25
@@ -230,13 +230,13 @@ const Banner = ({
             {!centerHeading && <Box></Box>}
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {centerHeadingWithTagLine && (
-                <Copy delay={0.85} animateOnScroll={false}>
+                <Copy delay={0.75} animateOnScroll={false}>
                   <span className='overlay-subtext-tagline'>{subHeading1}</span>
                 </Copy>
               )}
 
               {!centerHeading && (
-                <Copy delay={0.85} animateOnScroll={false}>
+                <Copy delay={0.75} animateOnScroll={false}>
                   <span className='overlay-title-2'>
                     {subHeading1}
                     <br />
@@ -244,7 +244,7 @@ const Banner = ({
                   </span>
                 </Copy>
               )}
-              <Copy byChar animateOnScroll={false} delay={0.8}>
+              <Copy byChar animateOnScroll={false} delay={0.7}>
                 <span
                   className={`overlay-subtext-2 ${
                     centerHeading ? "large-text" : "medium-text"
