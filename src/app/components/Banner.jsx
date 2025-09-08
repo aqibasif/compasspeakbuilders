@@ -70,10 +70,10 @@ const Banner = ({
       // Animate all elements
       gsap.to(".line span", {
         y: 0,
-        duration: 2,
-        stagger: 0.075,
+        duration: 1.5,
+        stagger: 0.5,
         ease: "power4.out",
-        delay: 0.25,
+        delay: 0.85,
       });
 
       return () => {
@@ -119,7 +119,7 @@ const Banner = ({
             {centerHeadingWithTagLine && (
               <span className="overlay-subtext-tagline">{subHeading1}</span>
             )}
-            <Copy byChar animateOnScroll={false}>
+            <Copy byChar animateOnScroll={false} >
               <span
                 className={`overlay-subtext ${
                   centerHeading ? "large-text" : "medium-text"

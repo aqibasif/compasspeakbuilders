@@ -148,7 +148,7 @@ const Banner = ({
       tl.to(".background-image", {
         scale: 1,
         duration: 1.5,
-        ease: "cubic-bezier(0, 0.01, 0.01, 1)",
+        ease: "power4.out",
       });
 
       // Animate text elements
@@ -156,8 +156,8 @@ const Banner = ({
         ".line span",
         {
           y: 0,
-          duration: 2,
-          stagger: 0.075,
+          duration: 1.5,
+          stagger: 0.5,
           ease: "power4.out",
         },
         0.25
@@ -182,7 +182,7 @@ const Banner = ({
       }}
     >
       <Box
-        className="background-image"
+        className='background-image'
         sx={{
           position: "absolute",
           top: 0,
@@ -206,7 +206,7 @@ const Banner = ({
           minHeight: `calc(100vh - ${navbarHeight})`,
         }}
       >
-        <Box className="content-box">
+        <Box className='content-box'>
           <Box
             sx={{
               maxWidth: "1040px",
@@ -222,17 +222,17 @@ const Banner = ({
             {!centerHeading && <Box></Box>}
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {centerHeadingWithTagLine && (
-                <span className="overlay-subtext-tagline">{subHeading1}</span>
+                <span className='overlay-subtext-tagline'>{subHeading1}</span>
               )}
 
               {!centerHeading && (
-                <span className="overlay-title-2">
+                <span className='overlay-title-2'>
                   {subHeading1}
                   <br />
                   {subHeading2}
                 </span>
               )}
-              <Copy byChar animateOnScroll={false}>
+              <Copy byChar animateOnScroll={false} delay={0.8}>
                 <span
                   className={`overlay-subtext-2 ${
                     centerHeading ? "large-text" : "medium-text"
@@ -261,7 +261,7 @@ const Banner = ({
                 }}
               >
                 <Box
-                  className=""
+                  className=''
                   sx={{
                     "& button": {
                       backgroundColor: "#FFFFFF",
@@ -301,7 +301,7 @@ const Banner = ({
                   }}
                 >
                   <Button
-                    className="poppins-font"
+                    className='poppins-font'
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavigation("/contact");
@@ -349,8 +349,8 @@ const Banner = ({
                     }}
                   >
                     <Link
-                      href="/services/#custom-homes"
-                      className="poppins-font hero-button"
+                      href='/services/#custom-homes'
+                      className='poppins-font hero-button'
                       onClick={(e) => {
                         e.preventDefault();
                         handleScrollToSection("/services/#custom-homes");
@@ -359,8 +359,8 @@ const Banner = ({
                       Custom homes
                     </Link>
                     <Link
-                      href="/services/#remodel"
-                      className="poppins-font hero-button"
+                      href='/services/#remodel'
+                      className='poppins-font hero-button'
                       onClick={(e) => {
                         e.preventDefault();
                         handleScrollToSection("/services/#remodel");
@@ -369,8 +369,8 @@ const Banner = ({
                       remodel
                     </Link>
                     <Link
-                      href="/services/#home-care"
-                      className="poppins-font hero-button"
+                      href='/services/#home-care'
+                      className='poppins-font hero-button'
                       onClick={(e) => {
                         e.preventDefault();
                         handleScrollToSection("/services/#home-care");
@@ -384,7 +384,7 @@ const Banner = ({
             )}
           </Box>
         </Box>
-        <div className="overlay-brown"></div>
+        <div className='overlay-brown'></div>
       </Box>
     </Box>
   );
