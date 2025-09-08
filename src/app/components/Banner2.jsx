@@ -132,7 +132,9 @@ const Banner = ({
 
       // Set initial state for text
       gsap.set([".get-started-btn", ".hero-button"], {
-        y: "120%",
+        // y: "120%",
+        opacity: 0,
+        filter: "blur(10px)",
         display: "block",
       });
 
@@ -156,7 +158,9 @@ const Banner = ({
         // ".line span",
         [".get-started-btn", ".hero-button"],
         {
-          y: 0,
+          // y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
           duration: 1.3,
           stagger: 0.035,
           ease: "power4.inOut",
@@ -166,9 +170,9 @@ const Banner = ({
       ); // Start text animation 0.25s after timeline begins
 
       return () => {
-        if (titleText) titleText.revert();
-        if (taglineText) taglineText.revert();
-        if (linksText) linksText.revert();
+        // if (titleText) titleText.revert();
+        // if (taglineText) taglineText.revert();
+        // if (linksText) linksText.revert();
       };
     },
     { scope: banner }
