@@ -150,8 +150,8 @@ const Banner = ({
       // Animate background image scale
       tl.to(".background-image", {
         scale: 1,
-        duration: 1.3,
-        ease: "power4.inOut",
+        duration: 1.5,
+        ease: "power4.out",
       });
 
       // Animate text elements
@@ -165,8 +165,9 @@ const Banner = ({
           filter: "blur(0px)",
           duration: 1.5,
           stagger: 0.045,
-          ease: "elastic.out(1.25, 0.4)",
-          delay: 0.75,
+          ease: "power4.out",
+          // ease: "elastic.out(1.25, 0.4)",
+          delay: 0.4,
         },
         0.25
       ); // Start text animation 0.25s after timeline begins
@@ -230,13 +231,13 @@ const Banner = ({
             {!centerHeading && <Box></Box>}
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {centerHeadingWithTagLine && (
-                <Copy delay={0.75} animateOnScroll={false}>
+                <Copy delay={0.7} animateOnScroll={false}>
                   <span className='overlay-subtext-tagline'>{subHeading1}</span>
                 </Copy>
               )}
 
               {!centerHeading && (
-                <Copy delay={0.75} animateOnScroll={false}>
+                <Copy delay={0.7} animateOnScroll={false}>
                   <span className='overlay-title-2'>
                     {subHeading1}
                     <br />
@@ -244,7 +245,7 @@ const Banner = ({
                   </span>
                 </Copy>
               )}
-              <Copy byChar animateOnScroll={false} delay={0.7}>
+              <Copy byChar animateOnScroll={false} delay={0.65}>
                 <span
                   className={`overlay-subtext-2 ${
                     centerHeading ? "large-text" : "medium-text"
