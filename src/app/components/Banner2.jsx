@@ -5,7 +5,7 @@ import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRigh
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import SplitType from "split-type";
+// import SplitType from "split-type";
 import Copy from "./Copy";
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
