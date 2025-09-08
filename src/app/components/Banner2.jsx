@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, Divider } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React, { useRef } from "react";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import Link from "next/link";
@@ -7,6 +7,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import Copy from "./Copy";
+import { useTransitionRouter } from "next-view-transitions";
+import { usePathname } from "next/navigation";
+import { scrollToSection } from "./scrollToSection";
 
 // Register GSAP plugin
 gsap.registerPlugin(useGSAP);
@@ -21,6 +24,71 @@ const Banner = ({
 }) => {
   const banner = useRef();
   const navbarHeight = "170px";
+  const router = useTransitionRouter();
+  const pathname = usePathname();
+
+  const slideInOut = () => {
+    if (!document.startViewTransition) return;
+
+    document.documentElement.animate(
+      [
+        {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+        {
+          opacity: 0.2,
+          transform: "translateY(-35%)",
+        },
+      ],
+      {
+        duration: 1500,
+        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-old(root)",
+      }
+    );
+
+    document.documentElement.animate(
+      [
+        {
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        },
+        {
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        },
+      ],
+      {
+        duration: 1500,
+        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
+  };
+
+  const handleNavigation = (path) => {
+    if (pathname === path) return;
+
+    router.push(path, {
+      onTransitionReady: slideInOut,
+    });
+  };
+
+  const handleScrollToSection = (path) => {
+    const sectionId = path.split("#")[1];
+
+    if (pathname === "/services") {
+      scrollToSection(sectionId);
+    } else {
+      router.push("/services", {
+        onTransitionReady: () => {
+          slideInOut();
+          scrollToSection(sectionId);
+        },
+      });
+    }
+  };
 
   useGSAP(
     () => {
@@ -232,7 +300,13 @@ const Banner = ({
                     },
                   }}
                 >
-                  <Button className="poppins-font">
+                  <Button
+                    className="poppins-font"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation("/contact");
+                    }}
+                  >
                     Let's Get Started
                     <KeyboardArrowRightRoundedIcon fontSize={"small"} />
                   </Button>
@@ -275,20 +349,32 @@ const Banner = ({
                     }}
                   >
                     <Link
-                      href="/services/#custom-home"
+                      href="/services/#custom-homes"
                       className="poppins-font hero-button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleScrollToSection("/services/#custom-homes");
+                      }}
                     >
                       Custom homes
                     </Link>
                     <Link
                       href="/services/#remodel"
                       className="poppins-font hero-button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleScrollToSection("/services/#remodel");
+                      }}
                     >
                       remodel
                     </Link>
                     <Link
                       href="/services/#home-care"
                       className="poppins-font hero-button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleScrollToSection("/services/#home-care");
+                      }}
                     >
                       home care
                     </Link>
