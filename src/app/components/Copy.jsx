@@ -80,9 +80,9 @@ const Copy = ({
 
       const animateProps = {
         y: "0%",
-        duration: 1.5,
-        stagger: 0.05,
-        ease: "power4.out",
+        duration: 1.3,
+        stagger: byChar ? 0.035 : 0.07,
+        ease: "power4.inOut",
         delay: delay,
       };
 
@@ -117,7 +117,7 @@ const Copy = ({
   }
 
   return (
-    <div ref={containerRef} data-copy-wrapper="true">
+    <div ref={containerRef} data-copy-wrapper='true'>
       {children}
     </div>
   );

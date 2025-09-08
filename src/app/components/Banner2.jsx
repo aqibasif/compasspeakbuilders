@@ -92,17 +92,17 @@ const Banner = ({
 
   useGSAP(
     () => {
-      const titleText = new SplitType(".overlay-title-2", {
-        types: "lines",
-        tagName: "div",
-        lineClass: "line",
-      });
+      // const titleText = new SplitType(".overlay-title-2", {
+      //   types: "lines",
+      //   tagName: "div",
+      //   lineClass: "line",
+      // });
 
-      const taglineText = new SplitType(".overlay-subtext-tagline", {
-        types: "lines",
-        tagName: "div",
-        lineClass: "line",
-      });
+      // const taglineText = new SplitType(".overlay-subtext-tagline", {
+      //   types: "lines",
+      //   tagName: "div",
+      //   lineClass: "line",
+      // });
 
       // const subtextText = new SplitType(".overlay-subtext-2", {
       //   types: "lines",
@@ -111,28 +111,28 @@ const Banner = ({
       // });
 
       // Animate the links
-      const linksText = new SplitType(".animated-link", {
-        types: "lines",
-        tagName: "div",
-        lineClass: "line",
-      });
+      // const linksText = new SplitType(".animated-link", {
+      //   types: "lines",
+      //   tagName: "div",
+      //   lineClass: "line",
+      // });
 
-      // Process all animated elements
-      const allTextElements = [
-        ...(titleText.lines || []),
-        ...(taglineText.lines || []),
-        // ...(subtextText.lines || []),
-        ...(linksText.lines || []),
-      ];
+      // // Process all animated elements
+      // const allTextElements = [
+      //   ...(titleText.lines || []),
+      //   ...(taglineText.lines || []),
+      //   // ...(subtextText.lines || []),
+      //   ...(linksText.lines || []),
+      // ];
 
-      allTextElements.forEach((line) => {
-        const content = line.innerHTML;
-        line.innerHTML = `<span>${content}</span>`;
-      });
+      // allTextElements.forEach((line) => {
+      //   const content = line.innerHTML;
+      //   line.innerHTML = `<span>${content}</span>`;
+      // });
 
       // Set initial state for text
-      gsap.set(".line span", {
-        y: 400,
+      gsap.set([".get-started-btn", ".hero-button"], {
+        y: "120%",
         display: "block",
       });
 
@@ -147,18 +147,20 @@ const Banner = ({
       // Animate background image scale
       tl.to(".background-image", {
         scale: 1,
-        duration: 1.5,
-        ease: "power4.out",
+        duration: 1.3,
+        ease: "power4.inOut",
       });
 
       // Animate text elements
       tl.to(
-        ".line span",
+        // ".line span",
+        [".get-started-btn", ".hero-button"],
         {
           y: 0,
-          duration: 1.5,
-          stagger: 0.05,
-          ease: "power4.out",
+          duration: 1.3,
+          stagger: 0.035,
+          ease: "power4.inOut",
+          delay: 0.7,
         },
         0.25
       ); // Start text animation 0.25s after timeline begins
@@ -222,17 +224,21 @@ const Banner = ({
             {!centerHeading && <Box></Box>}
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {centerHeadingWithTagLine && (
-                <span className='overlay-subtext-tagline'>{subHeading1}</span>
+                <Copy delay={1} animateOnScroll={false}>
+                  <span className='overlay-subtext-tagline'>{subHeading1}</span>
+                </Copy>
               )}
 
               {!centerHeading && (
-                <span className='overlay-title-2'>
-                  {subHeading1}
-                  <br />
-                  {subHeading2}
-                </span>
+                <Copy delay={1} animateOnScroll={false}>
+                  <span className='overlay-title-2'>
+                    {subHeading1}
+                    <br />
+                    {subHeading2}
+                  </span>
+                </Copy>
               )}
-              <Copy byChar animateOnScroll={false} delay={0.8}>
+              <Copy byChar animateOnScroll={false} delay={0.9}>
                 <span
                   className={`overlay-subtext-2 ${
                     centerHeading ? "large-text" : "medium-text"
@@ -301,7 +307,7 @@ const Banner = ({
                   }}
                 >
                   <Button
-                    className='poppins-font'
+                    className='poppins-font get-started-btn'
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavigation("/contact");
