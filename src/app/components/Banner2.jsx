@@ -150,7 +150,7 @@ const Banner = ({
       // Animate background image scale
       tl.to(".background-image", {
         scale: 1,
-        duration: 1.5,
+        duration: 1.75,
         ease: "power4.out",
       });
 
