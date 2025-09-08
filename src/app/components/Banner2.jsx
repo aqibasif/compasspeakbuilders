@@ -20,6 +20,7 @@ const Banner = ({
   centerHeadingWithTagLine = false,
 }) => {
   const banner = useRef();
+  const navbarHeight = "170px";
 
   useGSAP(
     () => {
@@ -68,7 +69,7 @@ const Banner = ({
       });
 
       // Set initial state for background image
-      gsap.set(".image-text-overlay-2", {
+      gsap.set(".background-image", {
         scale: 1.25,
       });
 
@@ -76,9 +77,9 @@ const Banner = ({
       const tl = gsap.timeline();
 
       // Animate background image scale
-      tl.to(".image-text-overlay-2", {
+      tl.to(".background-image", {
         scale: 1,
-        duration: 1.2,
+        duration: 1.5,
         ease: "cubic-bezier(0, 0.01, 0.01, 1)",
       });
 
@@ -97,7 +98,6 @@ const Banner = ({
       return () => {
         if (titleText) titleText.revert();
         if (taglineText) taglineText.revert();
-        // if (subtextText) subtextText.revert();
         if (linksText) linksText.revert();
       };
     },
@@ -105,17 +105,37 @@ const Banner = ({
   );
 
   return (
-    <Box ref={banner}>
+    <Box
+      ref={banner}
+      sx={{
+        position: "relative",
+        overflow: "hidden",
+        minHeight: `calc(100vh - ${navbarHeight})`,
+      }}
+    >
+      <Box
+        className="background-image"
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${backgroundImage.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
       <Box
         className={`image-text-overlay image-text-overlay-2 ${
           centerHeading ? "text-middle-center" : "text-middle-left"
         } `}
         sx={{
-          backgroundImage: `url(${backgroundImage.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          overflow: "hidden",
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          minHeight: `calc(100vh - ${navbarHeight})`,
         }}
       >
         <Box className="content-box">
@@ -144,7 +164,7 @@ const Banner = ({
                   {subHeading2}
                 </span>
               )}
-              <Copy byChar>
+              <Copy byChar animateOnScroll={false}>
                 <span
                   className={`overlay-subtext-2 ${
                     centerHeading ? "large-text" : "medium-text"

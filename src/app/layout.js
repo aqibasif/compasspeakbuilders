@@ -43,21 +43,7 @@ export default function RootLayout({ children }) {
         <body className={raleway.className}>
           <ReactLenis root />
           <MUIThemeProvider>
-            {pathname === "/" ? (
-              <CardNav
-                logo={Logo}
-                logoAlt="Company Logo"
-                items={NavItems}
-                baseColor="#fff"
-                menuColor="#000"
-                buttonBgColor="#111"
-                buttonTextColor="#fff"
-                ease="power3.out"
-              />
-            ) : (
-              <Navbar />
-            )}
-
+            <Navbar />
             <main>{children}</main>
             <Footer />
           </MUIThemeProvider>

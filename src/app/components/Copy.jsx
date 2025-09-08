@@ -80,8 +80,8 @@ const Copy = ({
 
       const animateProps = {
         y: "0%",
-        duration: 1,
-        stagger: 0.03,
+        duration: 3,
+        stagger: 0.04,
         ease: "power4.out",
         delay: delay,
       };

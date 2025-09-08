@@ -119,7 +119,7 @@ const Banner = ({
             {centerHeadingWithTagLine && (
               <span className="overlay-subtext-tagline">{subHeading1}</span>
             )}
-            <Copy byChar>
+            <Copy byChar animateOnScroll={false}>
               <span
                 className={`overlay-subtext ${
                   centerHeading ? "large-text" : "medium-text"
