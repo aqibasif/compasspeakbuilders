@@ -134,6 +134,7 @@ const Banner = ({
       gsap.set([".get-started-btn", ".hero-button"], {
         // y: "120%",
         opacity: 0,
+        scale: 0.6,
         filter: "blur(10px)",
         display: "block",
       });
@@ -160,10 +161,11 @@ const Banner = ({
         {
           // y: 0,
           opacity: 1,
+          scale: 1,
           filter: "blur(0px)",
           duration: 1.3,
-          stagger: 0.035,
-          ease: "power4.inOut",
+          stagger: 0.045,
+          ease: "bounce.inOut",
           delay: 0.7,
         },
         0.25
@@ -271,7 +273,7 @@ const Banner = ({
                 }}
               >
                 <Box
-                  className=''
+                  className='get-started-btn'
                   sx={{
                     "& button": {
                       backgroundColor: "#FFFFFF",
@@ -311,7 +313,7 @@ const Banner = ({
                   }}
                 >
                   <Button
-                    className='poppins-font get-started-btn'
+                    className='poppins-font'
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavigation("/contact");
