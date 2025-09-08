@@ -154,6 +154,15 @@ const Banner = ({
         ease: "power4.out",
       });
 
+      // tl.to('.background-image', {
+      //   y: '-10vh',
+      //   ease: 'none',
+      //   scrollTrigger: {
+      //     trigger: 
+
+      //   }
+      // }
+      // )
       // Animate text elements
       tl.to(
         // ".line span",
@@ -167,7 +176,7 @@ const Banner = ({
           stagger: 0.045,
           ease: "power4.out",
           // ease: "elastic.out(1.25, 0.4)",
-          delay: 0.4,
+          // delay: 0.4,
         },
         0.25
       ); // Start text animation 0.25s after timeline begins
@@ -231,13 +240,13 @@ const Banner = ({
             {!centerHeading && <Box></Box>}
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {centerHeadingWithTagLine && (
-                <Copy delay={0.7} animateOnScroll={false}>
+                <Copy delay={0.75} animateOnScroll={false}>
                   <span className='overlay-subtext-tagline'>{subHeading1}</span>
                 </Copy>
               )}
 
               {!centerHeading && (
-                <Copy delay={0.7} animateOnScroll={false}>
+                <Copy delay={0.75} animateOnScroll={false}>
                   <span className='overlay-title-2'>
                     {subHeading1}
                     <br />
@@ -363,7 +372,7 @@ const Banner = ({
                   >
                     <Link
                       href='/services/#custom-homes'
-                      className='poppins-font hero-button'
+                      className='poppins-font hero-button hero-btn-1'
                       onClick={(e) => {
                         e.preventDefault();
                         handleScrollToSection("/services/#custom-homes");
@@ -373,7 +382,7 @@ const Banner = ({
                     </Link>
                     <Link
                       href='/services/#remodel'
-                      className='poppins-font hero-button'
+                      className='poppins-font hero-button hero-btn-2'
                       onClick={(e) => {
                         e.preventDefault();
                         handleScrollToSection("/services/#remodel");
@@ -383,7 +392,7 @@ const Banner = ({
                     </Link>
                     <Link
                       href='/services/#home-care'
-                      className='poppins-font hero-button'
+                      className='poppins-font hero-button hero-btn-3'
                       onClick={(e) => {
                         e.preventDefault();
                         handleScrollToSection("/services/#home-care");
