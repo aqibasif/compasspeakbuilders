@@ -71,9 +71,9 @@ const Banner = ({
       gsap.to(".line span", {
         y: 0,
         duration: 1.5,
-        stagger: 0.05,
+        stagger: 0.055,
         ease: "power4.out",
-        delay: 0.85,
+        delay: 0.9,
       });
 
       return () => {
