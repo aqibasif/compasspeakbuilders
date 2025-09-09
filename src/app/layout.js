@@ -1,49 +1,35 @@
-"use client";
-import { Raleway, Roboto } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import MUIThemeProvider from "./components/ThemeProvider";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ViewTransitions } from "next-view-transitions";
 import { ReactLenis } from "lenis/react";
-import { usePathname } from "next/navigation";
 
-const raleway = Raleway({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   display: "swap",
-  variable: "--font-raleway",
+  variable: "--font-poppins",
 });
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700", "900"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-roboto",
-});
-
-// export const metadata = {
-//   title: "Compass Peak Builders - Custom Home Builders in Northern Colorado",
-//   description:
-//     "Compass Peak Builders - Custom Home Builders in Northern Colorado",
-// };
+export const metadata = {
+  title: "Compass Peak Builders - Custom Home Builders in Northern Colorado",
+  description:
+    "Compass Peak Builders - Custom Home Builders in Northern Colorado",
+};
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
   return (
     <ViewTransitions>
-      <html lang="en" className={`${raleway.variable} ${roboto.variable}`}>
-        <body className={raleway.className}>
+      <html lang="en" className={`${poppins.variable}`}>
+        <body className={poppins.className}>
           <ReactLenis root />
-          <MUIThemeProvider>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </MUIThemeProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </body>
       </html>
     </ViewTransitions>

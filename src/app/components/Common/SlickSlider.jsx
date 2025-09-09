@@ -2,8 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-import { testimonials } from "../data";
-import { Box } from "@mui/material";
+import { testimonials } from "../../data";
 import TestimonialCard from "./TestimonialCard";
 
 // Dynamic import to avoid SSR issues
@@ -57,9 +56,9 @@ function TestimonialsSlider({
     <div className="slider-container">
       <Slider {...settings}>
         {testimonials.map((testimonial, index) => (
-          <Box key={index} sx={{ padding: "10px" }}>
+          <div key={index}>
             <TestimonialCard testimonial={testimonial} />
-          </Box>
+          </div>
         ))}
       </Slider>
     </div>

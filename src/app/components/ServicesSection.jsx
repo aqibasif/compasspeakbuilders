@@ -1,22 +1,24 @@
 "use client";
-import React from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
-import ConceptHomeImage from "@/app/uploads/custom-homes.jpg";
-import RemodelImage from "@/app/uploads/remodel.jpg";
-import HomeCareImage from "@/app/uploads/home-care.jpg";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import TextAnimationWrapper from "./TextAnimationWrapper";
-import ScrollReveal from "./ScrollReveal";
+import TextAnimationWrapper from "./Common/TextAnimationWrapper";
+import ScrollReveal from "./Common/ScrollReveal";
+import { ConceptHomeImage, HomeCareImage, RemodelImage } from "../Utils/images";
 
 const ServicesSection = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 960);
+    };
+
+    checkIsMobile();
+
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   const sections = [
     {
@@ -43,88 +45,63 @@ const ServicesSection = () => {
   ];
 
   return (
-    <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: "#fafafa" }}>
-      <Box maxWidth="1040px" mx={"auto"}>
+    <div className="services-container">
+      <div className="section-container">
         {sections.map((section, index) => {
           const isReversed = index % 2 !== 0;
-
           return (
-            <Box
-              sx={{
-                display: "grid",
+            <div
+              className="services-grid"
+              style={{
                 gridTemplateColumns: isMobile
                   ? "1fr"
                   : isReversed
                   ? "1.5fr 1fr"
                   : "1fr 1.5fr",
-                my: "80px",
-                px: "20px",
               }}
               key={index}
               id={section.id}
             >
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  p: 2,
+              <div
+                className="col-1"
+                style={{
                   order: isMobile ? 2 : isReversed ? 2 : 1,
                 }}
               >
-                <Box
-                  sx={{
-                    "& .raleway-font": {
-                      fontSize: "32px",
-                      fontWeight: 700,
-                      mb: 1,
-                    },
-                    "& .roboto-font": {
-                      fontSize: "16px",
-                      fontWeight: 300,
-                      mb: 1,
-                    },
-                  }}
-                >
+                <div>
                   <TextAnimationWrapper className="title">
-                    <Typography variant="h2" className="raleway-font">
-                      {section.title}
-                    </Typography>
+                    <h2 className="poppins-font">{section.title}</h2>
                   </TextAnimationWrapper>
                   <ScrollReveal
                     baseOpacity={0}
                     enableBlur={true}
                     baseRotation={0}
                     blurStrength={0}
-                    containerClassName="card-content roboto-font"
+                    containerClassName="card-content service-detail"
                   >
                     {section.content}
                   </ScrollReveal>
-                </Box>
-              </Box>
+                </div>
+              </div>
 
-              <Box
-                sx={{
-                  "& img": {
-                    width: "100% !important",
-                    maxHeight: "400px !important",
-                    borderRadius: "8px",
-                    objectFit: "cover",
-                  },
+              <div
+                className="service-img"
+                style={{
                   order: isMobile ? 1 : isReversed ? 1 : 2,
                 }}
               >
                 <Image
-                  src={section.image.src}
+                  src={section.image}
                   alt={section.title}
                   width={500}
                   height={500}
                 />
-              </Box>
-            </Box>
+              </div>
+            </div>
           );
         })}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

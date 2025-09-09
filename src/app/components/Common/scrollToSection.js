@@ -6,7 +6,7 @@ export const scrollToSection = (sectionId) => {
       activeClass: "active",
       spy: false,
       smooth: true,
-      duration: 1000,
+      duration: 2000,
       offset: -20,
     });
   }, 10);
