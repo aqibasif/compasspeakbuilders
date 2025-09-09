@@ -176,9 +176,9 @@ const Banner = ({
           // stagger: 0.045,
           ease: "power4.out",
           // ease: "elastic.out(1.25, 0.4)",
-          delay: 0.4,
+          // delay: 0.4,
         },
-        0.25
+        0.45
       ); // Start text animation 0.25s after timeline begins
 
       return () => {
