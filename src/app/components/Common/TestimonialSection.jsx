@@ -1,6 +1,7 @@
 import React from "react";
 import TextAnimationWrapper from "./TextAnimationWrapper";
-import SlickSlider from "./SlickSlider";
+import TestimonialSlider from "./TestimonialSlider";
+import { testimonials } from "@/app/data";
 
 const TestimonialSection = () => {
   return (
@@ -13,7 +14,7 @@ const TestimonialSection = () => {
       </div>
 
       <div className="fade-edges">
-        <SlickSlider slidesToShow={3} />
+        <TestimonialSlider testimonials={testimonials} />
       </div>
     </>
   );
