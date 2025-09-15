@@ -14,25 +14,26 @@ const AnimatedBlock = ({ children, delay = 0, animateOnScroll = true }) => {
 
       const isMobile = window.innerWidth <= 768; // You can adjust the breakpoint
 
-      gsap.fromTo(
-        elementRef.current,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power4.out",
-          delay,
-          scrollTrigger: animateOnScroll
-            ? {
-                trigger: elementRef.current,
-                start: isMobile ? "top 75%" : "top 75%",
-                toggleActions: "play none none reverse",
-                invalidateOnRefresh: true,
-              }
-            : null,
-        }
-      );
+      gsap.set(elementRef.current, {
+        opacity: 0,
+        y: 60,
+      });
+
+      gsap.to(elementRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        delay,
+        scrollTrigger: animateOnScroll
+          ? {
+              trigger: elementRef.current,
+              start: isMobile ? "top 75%" : "top 75%",
+              toggleActions: "play none none reverse",
+              invalidateOnRefresh: true,
+            }
+          : null,
+      });
     },
     {
       scope: elementRef,
@@ -41,7 +42,7 @@ const AnimatedBlock = ({ children, delay = 0, animateOnScroll = true }) => {
   );
 
   return (
-    <div className="animated-block" ref={elementRef}>
+    <div className='animated-block' ref={elementRef}>
       {children}
     </div>
   );

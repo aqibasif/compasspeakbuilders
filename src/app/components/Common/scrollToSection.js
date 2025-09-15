@@ -1,7 +1,10 @@
-import { scroller } from "react-scroll";
+"use client";
+
+import * as Scroll from "react-scroll";
+const { scroller } = Scroll;
 
 export const scrollToSection = (sectionId) => {
-  setTimeout(() => {
+  return setTimeout(() => {
     scroller.scrollTo(sectionId, {
       activeClass: "active",
       spy: false,

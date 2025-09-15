@@ -78,8 +78,11 @@ const AnimatedText = ({
 
       gsap.to(targetEls, {
         y: "0%",
-        duration: byChar ? 1 : 1,
-        stagger: byChar ? 0.03 : 0.07,
+        duration: byChar ? 1.2 : 1.2,
+        stagger: byChar ? 0.04 : 0.1,
+        // stagger: byChar ? 0.03 : 0.07,
+        // duration: 1.8,
+        // stagger: byChar ? 0.037 : 0.09,
         ease: "power4.out",
         delay: delay,
         scrollTrigger: animateOnScroll
@@ -110,7 +113,7 @@ const AnimatedText = ({
     },
     {
       scope: containerRef,
-      dependencies: [animateOnScroll, delay, byChar],
+      dependencies: [containerRef, animateOnScroll, delay, byChar],
     }
   );
 
@@ -119,7 +122,7 @@ const AnimatedText = ({
   }
 
   return (
-    <div ref={containerRef} data-copy-wrapper="true">
+    <div ref={containerRef} data-copy-wrapper='true'>
       {children}
     </div>
   );

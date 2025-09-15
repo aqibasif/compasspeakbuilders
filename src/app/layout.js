@@ -1,18 +1,31 @@
-import { Poppins } from "next/font/google";
-import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { ViewTransitions } from "next-view-transitions";
 import { ReactLenis } from "lenis/react";
+import localFont from "next/font/local";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"; // TODO: replace with swiper
+import "./globals.css";
+import PageLayout from "./components/PageLayout/PageLayout";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal"],
+const NeueMontreal = localFont({
+  src: [
+    {
+      path: "./fonts/NeueMontreal-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NeueMontreal-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NeueMontreal-Bold.otf",
+      weight: "600",
+      style: "normal",
+    },
+  ],
+  variable: "--font-neue-montreal",
   display: "swap",
-  variable: "--font-poppins",
 });
 
 export const metadata = {
@@ -24,12 +37,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
-      <html lang="en" className={`${poppins.variable}`}>
-        <body className={poppins.className}>
+      <html lang='en' className={NeueMontreal.className}>
+        <body>
           <ReactLenis root />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <PageLayout>{children}</PageLayout>
         </body>
       </html>
     </ViewTransitions>

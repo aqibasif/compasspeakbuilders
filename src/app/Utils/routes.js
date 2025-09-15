@@ -1,6 +1,6 @@
 export const routes = {
   HOME: "/",
-  ABOUT: "/about-compass-peak-builders",
+  ABOUT: "/about",
   SERVICES: "/services",
   CONTACT: "/contact",
 };

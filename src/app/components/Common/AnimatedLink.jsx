@@ -1,6 +1,7 @@
 "use client";
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
+import { scrollToSection } from "./scrollToSection";
 
 export const transitionProps = {
   // from: "polygon(25% 75%, 75% 75%, 75% 75%, 25% 75%)",
@@ -28,10 +29,12 @@ export const slideInOut = () => {
       {
         opacity: 1,
         transform: "translateY(0)",
+        filter: "blur(0px) brightness(1)",
       },
       {
         opacity: 0.2,
         transform: "translateY(-35%)",
+        filter: "blur(4px) brightness(0.1)",
       },
     ],
     {
@@ -73,17 +76,17 @@ const AnimatedLink = ({ href, children, className = "", onClick }) => {
       return;
     }
 
+    const sectionId = href.split("#")[1];
+
     router.push(href, {
-      onTransitionReady: slideInOut,
+      onTransitionReady: () => {
+        slideInOut();
+        if (sectionId) scrollToSection(sectionId);
+      },
     });
 
     if (onClick) onClick(); // useful for closing mobile menu
   };
-
-  // TODO: check how to fasten the load of pages from here
-
-  // TODO: copy parallaxImage comp and ask gpt to convert it for GSAP
-  // TODO: also convert skiper gallery into gsap integration
 
   return (
     <a onClick={handleClick} className={className}>

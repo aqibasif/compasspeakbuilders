@@ -2,9 +2,9 @@ import React from "react";
 import TextAnimationWrapper from "./TextAnimationWrapper";
 import ScrollReveal from "./ScrollReveal";
 
-const ShortAbout = () => {
+const ScrollRevealAbout = () => {
   return (
-    <div className="short-about">
+    <div className='reveal-short-about'>
       <TextAnimationWrapper>
         <h2>Northern Colorado Custom Home Builder</h2>
       </TextAnimationWrapper>
@@ -24,4 +24,4 @@ const ShortAbout = () => {
   );
 };
 
-export default ShortAbout;
+export default ScrollRevealAbout;
