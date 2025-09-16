@@ -42,7 +42,7 @@ const ParallaxImage = ({ className, src, alt, multiplier = 0.3 }) => {
   return (
     <div ref={containerRef} className={`parallax-image ${className}`}>
       {/* <img ref={imageRef} src={src} alt={alt} /> */}
-      <Image ref={imageRef} src={src} alt={alt} height={2000} width={2000} />
+      <Image ref={imageRef} src={src} alt={alt} height={2400} width={2400} />
     </div>
   );
 };

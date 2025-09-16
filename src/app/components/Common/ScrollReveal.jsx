@@ -24,7 +24,7 @@ const ScrollReveal = ({
     return text.split(/(\s+)/).map((word, index) => {
       if (word.match(/^\s+$/)) return word;
       return (
-        <span className="word" key={index}>
+        <span className='word' key={index}>
           {word}
         </span>
       );
@@ -68,7 +68,8 @@ const ScrollReveal = ({
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: "top bottom-=20%",
+          start: "top 75%",
+          // start: "top bottom-=20%",
           end: wordAnimationEnd,
           scrub: true,
         },
@@ -86,7 +87,8 @@ const ScrollReveal = ({
           scrollTrigger: {
             trigger: el,
             scroller,
-            start: "top bottom-=20%",
+            start: "top 75%",
+            // start: "top bottom-=20%",
             end: wordAnimationEnd,
             scrub: true,
           },
@@ -108,9 +110,9 @@ const ScrollReveal = ({
   ]);
 
   return (
-    <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
-      <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
-    </h2>
+    <div ref={containerRef} className={`${containerClassName}`}>
+      <h4 className={`${textClassName}`}>{splitText}</h4>
+    </div>
   );
 };
 

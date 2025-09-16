@@ -4,6 +4,8 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { testimonials } from "../../data";
 import TestimonialCard from "./TestimonialCard";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"; // TODO: replace with swiper
 
 // Dynamic import to avoid SSR issues
 const Slider = dynamic(() => import("react-slick"), {

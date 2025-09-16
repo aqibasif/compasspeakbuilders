@@ -12,12 +12,12 @@ const ShortAbout = () => {
         </h2>
       </AnimatedText>
       <AnimatedText>
-        <h4>
+        <h5>
           Compass Peak Builders is a custom home builder specializing in custom
           homes, remodels, and home care in Northern Colorado. We combine
           expertise, craft, and integrity to provide an exceptional product with
           peace of mind along the way.
-        </h4>
+        </h5>
       </AnimatedText>
     </div>
   );

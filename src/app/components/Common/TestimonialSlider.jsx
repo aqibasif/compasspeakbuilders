@@ -71,16 +71,16 @@ const TestimonialSlider = ({
   };
 
   return (
-    <div className="testimonial-wrapper">
-      <div className="testimonial-inner-wrapper">
+    <div className='testimonial-wrapper'>
+      <div className='testimonial-inner-wrapper'>
         <Slider {...settings}>
           {testimonials.map((testimonial, index) => (
             <div key={index}>
-              <div className="testimonial-card">
+              <div className='testimonial-card'>
                 <div>
-                  <p className="detail-content">"{testimonial.content}"</p>
+                  <p className='detail-content'>"{testimonial.content}"</p>
                   <h6>{testimonial.name}</h6>
-                  <p className="role">{testimonial.role}</p>
+                  <p className='role'>{testimonial.role}</p>
                 </div>
               </div>
             </div>

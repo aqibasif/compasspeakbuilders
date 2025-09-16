@@ -6,6 +6,8 @@ import SplitText from "gsap/SplitText";
 import { testimonials } from "@/app/data";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
+import NumberFlow from "@number-flow/react";
+import AnimatedBlock from "../Common/AnimatedBlock";
 
 gsap.registerPlugin(SplitText);
 
@@ -180,38 +182,41 @@ export default function CustomTestimonials() {
 
   return (
     <div className='testimonials-container'>
-      <div className='testimonials-block'>
-        <div className='left-col'>
-          <p>Testimonials</p>
-          <h4 className='numbering'>
-            {index + 1}/{testimonials.length}
-          </h4>
-        </div>
+      <AnimatedBlock>
+        <div className='testimonials-block'>
+          <div className='left-col'>
+            <p>Testimonials</p>
+            <h4 className='numbering'>
+              <NumberFlow value={index + 1} />
+              <span className='numbering-suffix'>{`/${testimonials.length}`}</span>
+            </h4>
+          </div>
 
-        <div className='testimonial-area' ref={cardRef}>
-          <ContentWrapper key={index} className='testimonial-content'>
-            <RiDoubleQuotesL style={{ marginRight: "9px" }} />
-            {current.content}
-            <RiDoubleQuotesR style={{ marginLeft: "9px" }} />
-          </ContentWrapper>
+          <div className='testimonial-area' ref={cardRef}>
+            <ContentWrapper key={index} className='testimonial-content'>
+              <RiDoubleQuotesL style={{ marginRight: "9px" }} />
+              {current.content}
+              <RiDoubleQuotesR style={{ marginLeft: "9px" }} />
+            </ContentWrapper>
 
-          <div className='testimonial-author'>
-            <div>
-              <h6>{current.name}</h6>
-              <p>{current.role}</p>
-            </div>
+            <div className='testimonial-author'>
+              <div>
+                <h6>{current.name}</h6>
+                <p>{current.role}</p>
+              </div>
 
-            <div className='testimonial-buttons'>
-              <button onClick={() => handleChange("prev", true)}>
-                <IoMdArrowBack />
-              </button>
-              <button onClick={() => handleChange("next", true)}>
-                <IoMdArrowForward />
-              </button>
+              <div className='testimonial-buttons'>
+                <button onClick={() => handleChange("prev", true)}>
+                  <IoMdArrowBack />
+                </button>
+                <button onClick={() => handleChange("next", true)}>
+                  <IoMdArrowForward />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </AnimatedBlock>
     </div>
   );
 }

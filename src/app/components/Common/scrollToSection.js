@@ -10,7 +10,8 @@ export const scrollToSection = (sectionId) => {
       spy: false,
       smooth: true,
       duration: 2000,
-      offset: -20,
+      offset: 0,
+      // offset: -20,
     });
   }, 10);
 };

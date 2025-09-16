@@ -1,10 +1,8 @@
 import { ViewTransitions } from "next-view-transitions";
 import { ReactLenis } from "lenis/react";
 import localFont from "next/font/local";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css"; // TODO: replace with swiper
-import "./globals.css";
 import PageLayout from "./components/PageLayout/PageLayout";
+import "./globals.css";
 
 const NeueMontreal = localFont({
   src: [

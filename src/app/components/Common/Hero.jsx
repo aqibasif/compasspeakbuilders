@@ -11,24 +11,29 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const RenderSubHeadings = ({ subHeading }) => {
-  if (typeof subHeading === "string" && !subHeading) {
+  if (typeof subHeading === "string" && !!subHeading) {
     return (
-      <AnimatedText animateOnScroll={false} delay={0.95}>
-        <h5>{subHeading}</h5>
+      <AnimatedText animateOnScroll={false} delay={1}>
+        <h6>{subHeading}</h6>
       </AnimatedText>
     );
   } else if (typeof subHeading === "object") {
     return (
-      <AnimatedText animateOnScroll={false} delay={0.95}>
+      <AnimatedText animateOnScroll={false} delay={1}>
         {subHeading.map((sub) => (
-          <h5 key={sub}>{sub}</h5>
+          <h6 key={sub}>{sub}</h6>
         ))}
       </AnimatedText>
     );
   } else return <></>;
 };
 
-const Hero = ({ image, heading = "", subHeading = "" }) => {
+const Hero = ({
+  image,
+  heading = "",
+  subHeading = "",
+  isHomePageHero = false,
+}) => {
   const heroRef = useRef(null);
 
   useGSAP(
@@ -100,45 +105,49 @@ const Hero = ({ image, heading = "", subHeading = "" }) => {
     <div className='hero' ref={heroRef}>
       <ParallaxImage className='hero-img' src={image} alt={heading} />
 
-      <div className='hero-content'>
+      <div
+        className={`hero-content ${isHomePageHero ? "" : "centered-aligned"}`}
+      >
         <RenderSubHeadings subHeading={subHeading} />
         <AnimatedText animateOnScroll={false} byChar delay={0.85}>
           <h1>{heading}</h1>
         </AnimatedText>
 
-        <div className='hero-buttons'>
-          <AnimatedBlock animateOnScroll={false} delay={0.9}>
-            <Button
-              text="Let's Get Started"
-              icon={<MdOutlineArrowOutward />}
-              route={routes.CONTACT}
-            />
-          </AnimatedBlock>
+        {isHomePageHero && (
+          <div className='hero-buttons'>
+            <AnimatedBlock animateOnScroll={false} delay={0.9}>
+              <Button
+                text="Let's Get Started"
+                icon={<MdOutlineArrowOutward />}
+                route={routes.CONTACT}
+              />
+            </AnimatedBlock>
 
-          <div className='sections-buttons'>
-            <AnimatedBlock animateOnScroll={false} delay={1}>
-              <Button
-                variant={2}
-                text='Custom Homes'
-                route={routes.SERVICES + "/#custom-homes"}
-              />
-            </AnimatedBlock>
-            <AnimatedBlock animateOnScroll={false} delay={1.1}>
-              <Button
-                variant={2}
-                text='Remodel'
-                route={routes.SERVICES + "/#remodel"}
-              />
-            </AnimatedBlock>
-            <AnimatedBlock animateOnScroll={false} delay={1.2}>
-              <Button
-                variant={2}
-                text='Home Care'
-                route={routes.SERVICES + "/#home-care"}
-              />
-            </AnimatedBlock>
+            <div className='sections-buttons'>
+              <AnimatedBlock animateOnScroll={false} delay={1}>
+                <Button
+                  variant={2}
+                  text='Custom Homes'
+                  route={routes.SERVICES + "/#custom-homes"}
+                />
+              </AnimatedBlock>
+              <AnimatedBlock animateOnScroll={false} delay={1.1}>
+                <Button
+                  variant={2}
+                  text='Remodel'
+                  route={routes.SERVICES + "/#remodel"}
+                />
+              </AnimatedBlock>
+              <AnimatedBlock animateOnScroll={false} delay={1.2}>
+                <Button
+                  variant={2}
+                  text='Home Care'
+                  route={routes.SERVICES + "/#home-care"}
+                />
+              </AnimatedBlock>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -1,16 +1,13 @@
 import { HomeBanner } from "@/app/Utils/images";
-import Banner from "../Common/Banner2";
-import TestimonialSection from "../Common/TestimonialSection";
-import ScrollRevealAbout from "../Common/ScrollRevealAbout";
 import Hero from "../Common/Hero";
 import ShortAbout from "./ShortAbout";
-import OutTestimonials from "./OurTestimonials";
 import CustomTestimonials from "./CustomTestimonials";
 
 export default function HomePage() {
   return (
     <>
       <Hero
+        isHomePageHero
         image={HomeBanner}
         heading='Rest Easy'
         subHeading={[

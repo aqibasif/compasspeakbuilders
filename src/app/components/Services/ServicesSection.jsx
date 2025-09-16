@@ -1,9 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import TextAnimationWrapper from "./Common/TextAnimationWrapper";
-import ScrollReveal from "./Common/ScrollReveal";
-import { ConceptHomeImage, HomeCareImage, RemodelImage } from "../Utils/images";
+import TextAnimationWrapper from "../Common/TextAnimationWrapper";
+import ScrollReveal from "../Common/ScrollReveal";
+import {
+  ConceptHomeImage,
+  HomeCareImage,
+  RemodelImage,
+} from "../../Utils/images";
+import ParallaxImage from "../Common/ParallaxImage";
 
 const ServicesSection = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -45,63 +50,60 @@ const ServicesSection = () => {
   ];
 
   return (
-    <div className="services-container">
-      <div className="section-container">
-        {sections.map((section, index) => {
-          const isReversed = index % 2 !== 0;
-          return (
-            <div
-              className="services-grid"
-              style={{
-                gridTemplateColumns: isMobile
-                  ? "1fr"
-                  : isReversed
-                  ? "1.5fr 1fr"
-                  : "1fr 1.5fr",
-              }}
-              key={index}
-              id={section.id}
-            >
+    <>
+      <div className='services-container'>
+        <div className='section-container'>
+          {sections.map((section, index) => {
+            const isReversed = index % 2 !== 0;
+            return (
               <div
-                className="col-1"
+                className='services-grid'
                 style={{
-                  order: isMobile ? 2 : isReversed ? 2 : 1,
+                  gridTemplateColumns: isMobile
+                    ? "1fr"
+                    : isReversed
+                    ? "1.5fr 1fr"
+                    : "1fr 1.5fr",
                 }}
+                key={index}
+                id={section.id}
               >
-                <div>
-                  <TextAnimationWrapper className="title">
-                    <h2 className="poppins-font">{section.title}</h2>
-                  </TextAnimationWrapper>
-                  <ScrollReveal
+                <div
+                  className='col-1'
+                  style={{
+                    order: isMobile ? 2 : isReversed ? 2 : 1,
+                  }}
+                >
+                  <div>
+                    <TextAnimationWrapper className='title'>
+                      <h2 className='poppins-font'>{section.title}</h2>
+                    </TextAnimationWrapper>
+                    {/* <ScrollReveal
                     baseOpacity={0}
                     enableBlur={true}
                     baseRotation={0}
                     blurStrength={0}
                     containerClassName="card-content service-detail"
-                  >
-                    {section.content}
-                  </ScrollReveal>
+                  > */}
+                    <p>{section.content}</p>
+                    {/* </ScrollReveal> */}
+                  </div>
+                </div>
+
+                <div
+                  className='service-img'
+                  style={{
+                    order: isMobile ? 1 : isReversed ? 1 : 2,
+                  }}
+                >
+                  <ParallaxImage src={section.image} alt={section.title} />
                 </div>
               </div>
-
-              <div
-                className="service-img"
-                style={{
-                  order: isMobile ? 1 : isReversed ? 1 : 2,
-                }}
-              >
-                <Image
-                  src={section.image}
-                  alt={section.title}
-                  width={500}
-                  height={500}
-                />
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
