@@ -11,6 +11,8 @@ export const scrollToSection = (sectionId) => {
       smooth: true,
       duration: 2000,
       offset: 0,
+      delay: 1050,
+
       // offset: -20,
     });
   }, 10);

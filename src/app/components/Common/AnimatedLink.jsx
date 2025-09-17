@@ -32,9 +32,9 @@ export const slideInOut = () => {
         filter: "blur(0px) brightness(1)",
       },
       {
-        opacity: 0.2,
+        opacity: 0.5,
         transform: "translateY(-35%)",
-        filter: "blur(4px) brightness(0.1)",
+        filter: "blur(6px) brightness(0.8)",
       },
     ],
     {

@@ -2,10 +2,11 @@ import { HomeBanner } from "@/app/Utils/images";
 import Hero from "../Common/Hero";
 import ShortAbout from "./ShortAbout";
 import CustomTestimonials from "./CustomTestimonials";
+import PageLayout from "../PageLayout/PageLayout";
 
 export default function HomePage() {
   return (
-    <>
+    <PageLayout>
       <Hero
         isHomePageHero
         image={HomeBanner}
@@ -15,22 +16,8 @@ export default function HomePage() {
           "WE BUILD DIFFERENT SO YOU CAN",
         ]}
       />
-
-      {/* <Banner
-        subHeading1='CONSTRUCTION DONE RIGHT.'
-        subHeading2='WE BUILD DIFFERENT SO YOU CAN'
-        heading='REST EASY'
-        backgroundImage={HomeBanner}
-      /> */}
-
       <ShortAbout />
-
-      {/* <div className='section-container'>
-        <ScrollRevealAbout />
-      </div> */}
       <CustomTestimonials />
-      {/* <OutTestimonials />
-      <TestimonialSection /> */}
-    </>
+    </PageLayout>
   );
 }

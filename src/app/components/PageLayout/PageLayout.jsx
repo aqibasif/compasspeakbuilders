@@ -15,7 +15,7 @@ const PageLayout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <div>{children}</div>
       <Footer />
     </>
   );

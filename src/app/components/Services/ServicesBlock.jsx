@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ConceptHomeImage,
   HomeCareImage,
@@ -47,21 +49,23 @@ const ServiceCard = ({ service, index }) => {
       <div className='service-card-content'>
         <AnimatedText>
           <h3>{service.title}</h3>
-        </AnimatedText>
-        <Image
-          className='service-image'
-          src={service.image}
-          alt={service.title}
-          width={1000}
-          height={1000}
-        />
-        {/* <ParallaxImage // TODO: LOOK INTO THIS ISSUE
+          {/* </AnimatedText> */}
+          <Image
+            className='service-image'
+            src={service.image}
+            alt={service.title}
+            width={1000}
+            height={1000}
+          />
+          {/* <ParallaxImage // TODO: LOOK INTO THIS ISSUE
           multiplier={0.15}
           className='service-image'
           src={service.image}
           alt={service.title}
         /> */}
-        <AnimatedText>
+          {/* <AnimatedText> */}
+
+          {/* // TODO issue of footer on contact page */}
           <h6>{service.content}</h6>
         </AnimatedText>
       </div>
