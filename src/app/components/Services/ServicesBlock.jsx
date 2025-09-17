@@ -15,7 +15,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const sections = [
+const services = [
   {
     id: "custom-homes",
     title: "CUSTOM HOMES",
@@ -42,7 +42,7 @@ const sections = [
 const ServiceCard = ({ service, index }) => {
   return (
     <div id={service.id} className='service-card'>
-      <AnimatedText>
+      <AnimatedText byChar>
         <h1>00{index}</h1>
       </AnimatedText>
 
@@ -129,7 +129,7 @@ const ServicesBlock = () => {
 
   return (
     <div className='services-block'>
-      {sections.map((service, index) => (
+      {services.map((service, index) => (
         <ServiceCard key={index} service={service} index={index + 1} />
       ))}
     </div>

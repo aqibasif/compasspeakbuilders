@@ -19,6 +19,7 @@
   --font-primary: "NeueMontreal", helvetica, "sans-serif";
 
   --padding: 42px;
+  --padding-md: 60px 42px;
   --padding-lg: 90px 42px;
   --gap: 32px;
   --gap-sm: 20px;
@@ -28,6 +29,7 @@
 @media (max-width: 768px) {
   :root {
     --padding: 20px;
+    --padding-md: 40px 20px;
     --padding-lg: 50px 20px;
   }
 }
@@ -613,7 +615,7 @@ footer {
   background-color: var(--color-dark);
 
   & .service-card {
-    padding: var(--padding-lg);
+    padding: var(--padding-md);
     display: grid;
     grid-template-columns: 0.3fr 1fr 0.3fr;
     gap: var(--gap-sm);
@@ -621,7 +623,8 @@ footer {
     position: sticky;
     top: 0;
     background-color: var(--color-light);
-    will-change: transform;
+    min-height: 100vh;
+    will-change: transform, filter;
 
     &:nth-child(1) {
       border: none;
@@ -630,6 +633,7 @@ footer {
     & .service-card-content {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       width: 100%;
       max-width: var(--max-width-sm);
       margin-inline: auto;
@@ -640,7 +644,7 @@ footer {
 
         width: 100%;
         height: auto;
-        aspect-ratio: 16/9;
+        aspect-ratio: 16/8.5;
       }
 
       & h6 {
@@ -657,6 +661,7 @@ footer {
       grid-template-columns: 1fr;
 
       & .service-card-content {
+        justify-content: flex-start;
         & .service-image {
           aspect-ratio: 16/10;
         }
