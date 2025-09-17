@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  ConceptHomeImage,
+  CustomHomesImage,
   HomeCareImage,
   RemodelImage,
 } from "@/app/Utils/images";
@@ -21,7 +21,7 @@ const sections = [
     title: "CUSTOM HOMES",
     content:
       "From concept to completion, we bring your unique vision to life with meticulous attention to detail, superior craftsmanship, and an unrivaled commitment to exceeding expectations. No matter what style your vision takes, we'll deliver an exceptional experience that results in a home that will stand the test of time.",
-    image: ConceptHomeImage,
+    image: CustomHomesImage,
   },
   {
     id: "remodel",

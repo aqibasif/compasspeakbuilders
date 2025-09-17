@@ -2,6 +2,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { ReactLenis } from "lenis/react";
 import localFont from "next/font/local";
 import "./globals.css";
+import PreLoaderProvider from "./components/Common/PreLoaderProvider";
 
 const NeueMontreal = localFont({
   src: [
@@ -36,8 +37,10 @@ export default function RootLayout({ children }) {
     <ViewTransitions>
       <html lang='en' className={NeueMontreal.className}>
         <body>
-          <ReactLenis root />
-          {children}
+          <PreLoaderProvider>
+            <ReactLenis root />
+            {children}
+          </PreLoaderProvider>
         </body>
       </html>
     </ViewTransitions>

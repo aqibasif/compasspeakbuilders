@@ -63,12 +63,6 @@ const Footer = () => {
   }, [pathname]);
 
   return (
-    // <footer ref={footerRef}>
-    //   <div className='footer-content'>
-    //     <div className='copyright'>&copy; 2025 Aember Coffee</div>
-    //     <Logo className='footer-logo' />
-    //   </div>
-    // </footer>
     <footer ref={footerRef}>
       <div className='footer-content'>
         <p>COMPASS PEAK BUILDERS</p>

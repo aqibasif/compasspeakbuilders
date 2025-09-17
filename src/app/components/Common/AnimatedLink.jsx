@@ -4,17 +4,12 @@ import { usePathname } from "next/navigation";
 import { scrollToSection } from "./scrollToSection";
 
 export const transitionProps = {
-  // from: "polygon(25% 75%, 75% 75%, 75% 75%, 25% 75%)",
-  // to: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-  // from: "inset(75% 25% 25% 25%)",
-  from: "inset(80% 15% 20% 15%)",
-  // from: "inset(90% 10% 10% 10%)",
-  // middle: "inset(15% 20% 15% 20%)",
+  from: "inset(50% 40% 50% 40%)",
   to: "inset(0% 0% 0% 0%)",
-  // from: "inset(80% 15% 20% 15%)",
-  // middle: "inset(30% 10% 10% 10%)",
-  // to: "inset(0% 0% 0% 0%)",
-  duration: 2,
+  // from: "circle(200% at 200% 100%)",
+  // to: "circle(200% at -100% 100%)",
+  
+  duration: 1.5,
   ease: "0.9, 0, 0.1, 1", // default
   ease1: ".215,.61,.355,1", // 1
   ease2: ".19,1,.22,1", // 2

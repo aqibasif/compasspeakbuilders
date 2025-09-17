@@ -11,6 +11,7 @@
     "@gsap/react": "^2.1.2",
     "@number-flow/react": "^0.5.10",
     "@studio-freight/react-lenis": "^0.0.47",
+    "fontfaceobserver": "^2.3.0",
     "gsap": "^3.13.0",
     "lenis": "^1.3.11",
     "next": "15.5.0",
