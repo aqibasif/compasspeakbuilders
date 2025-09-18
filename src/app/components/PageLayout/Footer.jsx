@@ -18,7 +18,7 @@ const Footer = () => {
         ".footer-content",
         {
           y: "-60%",
-          filter: "blur(4px)",
+          filter: "blur(3px)",
         },
         {
           y: "0%",

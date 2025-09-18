@@ -1,19 +1,32 @@
 "use client";
+
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { scrollToSection } from "./scrollToSection";
 
 export const transitionProps = {
-  from: "inset(50% 40% 50% 40%)",
+  from: "inset(100% 0% 0% 0%)",
   to: "inset(0% 0% 0% 0%)",
+
+  // from: "inset(50% 40% 50% 40%)",
+  // to: "inset(0% 0% 0% 0%)",
   // from: "circle(200% at 200% 100%)",
   // to: "circle(200% at -100% 100%)",
-  
-  duration: 1.5,
+
+  duration: 0.8,
   ease: "0.9, 0, 0.1, 1", // default
   ease1: ".215,.61,.355,1", // 1
   ease2: ".19,1,.22,1", // 2
   ease3: ".16,1,.3,1", // 3
+
+  ease4: "0.87, 0, 0.13, 1",
+
+  ease5: ".16,1,.3,1",
+  ease6: ".22,1,.36,1",
+
+  // ease7: "0.79,0.14,0.15,0.86",
+  ease7: "0.65,0.05,0.36,1",
+  // ease7: "0,.52,.72,.93",
 };
 
 export const slideInOut = () => {
@@ -24,17 +37,22 @@ export const slideInOut = () => {
       {
         opacity: 1,
         transform: "translateY(0)",
-        filter: "blur(0px) brightness(1)",
+        // filter: "brightness(1)",
+        // filter: "blur(0px)",
+        // filter: "blur(0px) brightness(1)",
       },
       {
-        opacity: 0.5,
-        transform: "translateY(-35%)",
-        filter: "blur(6px) brightness(0.8)",
+        opacity: 0.7,
+        transform: "translateY(-20%)",
+        // filter: "brightness(0.5)",
+        // transform: "translateY(-35%)",
+        // filter: "blur(12px)",
+        // filter: "blur(6px) brightness(0.8)",
       },
     ],
     {
-      duration: 1500,
-      easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+      duration: transitionProps.duration * 1000,
+      easing: `cubic-bezier(${transitionProps.ease7})`,
       fill: "forwards",
       pseudoElement: "::view-transition-old(root)",
     }
@@ -43,22 +61,18 @@ export const slideInOut = () => {
   document.documentElement.animate(
     [
       {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        clipPath: transitionProps.from,
       },
-      {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-      },
+      { clipPath: transitionProps.to },
     ],
     {
-      duration: 1500,
-      easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+      duration: transitionProps.duration * 1000,
+      easing: `cubic-bezier(${transitionProps.ease7})`,
       fill: "forwards",
       pseudoElement: "::view-transition-new(root)",
     }
   );
 };
-
-// Page transition function
 
 const AnimatedLink = ({ href, children, className = "", onClick }) => {
   const router = useTransitionRouter();

@@ -18,7 +18,7 @@ import {
 } from "@/app/Utils/images";
 
 gsap.registerPlugin(CustomEase);
-CustomEase.create("hop", transitionProps.ease);
+CustomEase.create("hop", transitionProps.ease7);
 
 const imagePaths = [
   HomeBanner,
@@ -30,6 +30,8 @@ const imagePaths = [
   CustomHomesImage,
   RemodelImage,
 ];
+
+// TODO: img loading issue needs to fix
 
 const preloadImages = (paths) =>
   Promise.all(
@@ -53,7 +55,6 @@ export default function PreLoaderProvider({ children }) {
   const [assetsLoaded, setAssetsLoaded] = useState(false);
   const [animationDone, setAnimationDone] = useState(false);
   const [renderChildren, setRenderChildren] = useState(false);
-  const [resetProps, setResetProps] = useState(false);
 
   useEffect(() => {
     const loadFonts = async () => {
@@ -95,23 +96,10 @@ export default function PreLoaderProvider({ children }) {
   useEffect(() => {
     if (animationDone) {
       gsap.fromTo(
-        ".page-layout",
-        { clipPath: transitionProps.from },
-        {
-          clipPath: transitionProps.to,
-          duration: transitionProps.duration,
-          ease: "hop",
-          onComplete: () => setResetProps(true),
-        }
-      );
-
-      gsap.fromTo(
         preloaderRef.current,
+        { clipPath: "inset(0% 0% 0% 0%)" },
         {
-          // clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-        },
-        {
-          // clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+          clipPath: "inset(0% 0% 100% 0%)",
           duration: transitionProps.duration,
           ease: "hop",
           onComplete: () => setAssetsLoaded(true),
@@ -137,17 +125,8 @@ export default function PreLoaderProvider({ children }) {
           </div>
         </div>
       )}
-      <div
-        className='page-layout'
-        style={{
-          clipPath: transitionProps.from,
-          ...(resetProps
-            ? {}
-            : { height: "100vh", maxHeight: "100vh", overflow: "hidden" }),
-        }}
-      >
-        {renderChildren && children}
-      </div>
+
+      {renderChildren && children}
     </>
   );
 }

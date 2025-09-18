@@ -38,7 +38,12 @@ export default function RootLayout({ children }) {
       <html lang='en' className={NeueMontreal.className}>
         <body>
           <PreLoaderProvider>
-            <ReactLenis root />
+            <ReactLenis
+              root
+              // options={{
+              //   lerp,
+              // }}
+            />
             {children}
           </PreLoaderProvider>
         </body>

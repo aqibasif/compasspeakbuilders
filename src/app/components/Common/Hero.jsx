@@ -13,13 +13,13 @@ import gsap from "gsap";
 const RenderSubHeadings = ({ subHeading }) => {
   if (typeof subHeading === "string" && !!subHeading) {
     return (
-      <AnimatedText animateOnScroll={false} delay={1}>
+      <AnimatedText animateOnScroll={false} delay={0.65}>
         <h6>{subHeading}</h6>
       </AnimatedText>
     );
   } else if (typeof subHeading === "object") {
     return (
-      <AnimatedText animateOnScroll={false} delay={1}>
+      <AnimatedText animateOnScroll={false} delay={0.65}>
         {subHeading.map((sub) => (
           <h6 key={sub}>{sub}</h6>
         ))}
@@ -43,25 +43,18 @@ const Hero = ({
       gsap.set(".hero-img", { scale: 1.25 });
 
       gsap.to(".hero-img", {
-        delay: 0.4,
+        delay: 0,
         scale: 1,
-        duration: 2.4,
+        duration: 2.55,
         ease: "power4.out",
       });
 
       gsap.fromTo(
-        // ".hero-img",
         heroRef.current,
         {
-          // y: "0%",
-          // scale: 1,
-          // filter: "brightness(1) blur(0px)",
           filter: "brightness(1)",
         },
         {
-          // y: "50vh",
-          // scale: 0.9,
-          // filter: "brightness(0) blur(7px)",
           filter: "brightness(0.1)",
           ease: "none",
           scrollTrigger: {
@@ -109,13 +102,13 @@ const Hero = ({
         className={`hero-content ${isHomePageHero ? "" : "centered-aligned"}`}
       >
         <RenderSubHeadings subHeading={subHeading} />
-        <AnimatedText animateOnScroll={false} byChar delay={0.85}>
+        <AnimatedText animateOnScroll={false} byChar delay={0.45}>
           <h1>{heading}</h1>
         </AnimatedText>
 
         {isHomePageHero && (
           <div className='hero-buttons'>
-            <AnimatedBlock animateOnScroll={false} delay={0.9}>
+            <AnimatedBlock animateOnScroll={false} delay={0.6}>
               <Button
                 text="Let's Get Started"
                 icon={<MdOutlineArrowOutward />}
@@ -124,21 +117,21 @@ const Hero = ({
             </AnimatedBlock>
 
             <div className='sections-buttons'>
-              <AnimatedBlock animateOnScroll={false} delay={1}>
+              <AnimatedBlock animateOnScroll={false} delay={0.65}>
                 <Button
                   variant={2}
                   text='Custom Homes'
                   route={routes.SERVICES + "/#custom-homes"}
                 />
               </AnimatedBlock>
-              <AnimatedBlock animateOnScroll={false} delay={1.1}>
+              <AnimatedBlock animateOnScroll={false} delay={0.7}>
                 <Button
                   variant={2}
                   text='Remodel'
                   route={routes.SERVICES + "/#remodel"}
                 />
               </AnimatedBlock>
-              <AnimatedBlock animateOnScroll={false} delay={1.2}>
+              <AnimatedBlock animateOnScroll={false} delay={0.75}>
                 <Button
                   variant={2}
                   text='Home Care'
