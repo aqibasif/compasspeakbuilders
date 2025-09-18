@@ -9,9 +9,9 @@ export const scrollToSection = (sectionId) => {
       activeClass: "active",
       spy: false,
       smooth: true,
-      duration: 2000,
+      duration: 1800,
       offset: 0,
-      delay: 1050,
+      delay: 800,
 
       // offset: -20,
     });

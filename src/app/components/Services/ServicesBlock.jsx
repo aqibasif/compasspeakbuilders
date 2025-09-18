@@ -71,7 +71,7 @@ const ServiceCard = ({ service, index }) => {
           {/* <AnimatedText> */}
 
           {/* // TODO issue of footer on contact page */}
-          <h6>{service.content}</h6>
+          <p>{service.content}</p>
         </AnimatedText>
       </div>
     </div>

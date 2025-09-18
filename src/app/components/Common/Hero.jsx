@@ -43,7 +43,7 @@ const Hero = ({
       gsap.set(".hero-img", { scale: 1.25 });
 
       gsap.to(".hero-img", {
-        delay: 0,
+        delay: 0.01,
         scale: 1,
         duration: 2.55,
         ease: "power4.out",

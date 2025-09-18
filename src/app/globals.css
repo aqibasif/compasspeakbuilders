@@ -1513,6 +1513,10 @@ a {
   /* & .loader-content {
     margin-inline: auto;
   } */
+
+  & .loader-numbering {
+    font-size: 8vw;
+  }
 }
 
 .page-layout {
