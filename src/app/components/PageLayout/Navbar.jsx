@@ -7,13 +7,14 @@ const Navbar = () => {
   return (
     <nav>
       <AnimatedLink href={routes.HOME}>
-        <Image
+        <img src={Logo} className='nav-logo' alt='logo' />
+        {/* <Image
           src={Logo}
           className='nav-logo'
           height={400}
           width={400}
           alt='logo'
-        />
+        /> */}
       </AnimatedLink>
 
       <div className='nav-links'>

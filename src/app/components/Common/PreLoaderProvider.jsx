@@ -31,7 +31,12 @@ const imagePaths = [
   RemodelImage,
 ];
 
+
+
 // TODO: img loading issue needs to fix
+
+
+
 
 const preloadImages = (paths) =>
   Promise.all(

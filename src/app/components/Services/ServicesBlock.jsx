@@ -50,13 +50,18 @@ const ServiceCard = ({ service, index }) => {
         <AnimatedText>
           <h3>{service.title}</h3>
           {/* </AnimatedText> */}
-          <Image
+          <img
+            className='service-image'
+            src={service.image}
+            alt={service.title}
+          />
+          {/* <Image
             className='service-image'
             src={service.image}
             alt={service.title}
             width={1000}
             height={1000}
-          />
+          /> */}
           {/* <ParallaxImage // TODO: LOOK INTO THIS ISSUE
           multiplier={0.15}
           className='service-image'
