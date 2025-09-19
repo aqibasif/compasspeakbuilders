@@ -76,7 +76,8 @@ const Hero = ({
           // filter: "brightness(1)",
         },
         {
-          y: "45vh",
+          // y: "45vh",
+          y: "35vh",
           // scale: 0.9,
           // filter: "brightness(0) blur(7px)",
           // filter: "brightness(0)",

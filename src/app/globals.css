@@ -65,6 +65,10 @@ body {
   background: #69696957;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* ======== COMMON ========= */
 
 .font-primary {
@@ -246,6 +250,24 @@ button {
   }
 }
 
+@media (max-width: 468px) {
+  button {
+    font-size: 14px;
+    padding: 0px 10px;
+    height: 32px;
+
+    & .button-content {
+      gap: 8px;
+    }
+
+    & .icon-circle {
+      width: 26px;
+      height: 26px;
+      margin-right: -7px;
+    }
+  }
+}
+
 /* ======== NAV ========= */
 
 nav {
@@ -354,7 +376,7 @@ footer {
 
 .hero {
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   position: relative;
   overflow: hidden;
   will-change: filter;
@@ -417,6 +439,18 @@ footer {
         align-items: center;
         gap: 12px;
         flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+@media (max-width: 468px) {
+  .hero {
+    & .hero-content {
+      & .hero-buttons {
+        & .sections-buttons {
+          gap: 4px;
+        }
       }
     }
   }
@@ -485,7 +519,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 400px;
+    min-height: 340px;
     width: 100%;
     max-width: 100%;
 
@@ -1503,9 +1537,10 @@ a {
   background: var(--color-light);
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: column;
-  padding: 2rem 3rem;
+  /* padding: 2rem 3rem; */
+  padding: var(--padding);
   clip-path: inset(0% 0% 0% 0%);
   will-change: clip-path;
   z-index: 9999;
@@ -1514,8 +1549,20 @@ a {
     margin-inline: auto;
   } */
 
+  & .progress-bar {
+    width: 100vw;
+    height: 10px;
+    background-color: var(--color-dark);
+    transform: scaleX(0);
+    transition: transform cubic-bezier(0.65, 0.05, 0.36, 1) 0.8s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+  }
+
   & .loader-numbering {
-    font-size: 8vw;
+    font-size: 9vw;
   }
 }
 
