@@ -3,6 +3,7 @@
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { scrollToSection } from "./scrollToSection";
+import CustomLink from "./CustomLink";
 
 export const transitionProps = {
   from: "inset(100% 0% 0% 0%)",
@@ -74,7 +75,13 @@ export const slideInOut = () => {
   );
 };
 
-const AnimatedLink = ({ href, children, className = "", onClick }) => {
+const AnimatedLink = ({
+  href,
+  children,
+  className = "",
+  onClick,
+  showCustomLink = false,
+}) => {
   const router = useTransitionRouter();
   const pathname = usePathname();
 
@@ -96,6 +103,14 @@ const AnimatedLink = ({ href, children, className = "", onClick }) => {
 
     if (onClick) onClick(); // useful for closing mobile menu
   };
+
+  if (showCustomLink) {
+    return (
+      <CustomLink onClick={handleClick} className={className}>
+        {children}
+      </CustomLink>
+    );
+  }
 
   return (
     <a onClick={handleClick} className={className}>

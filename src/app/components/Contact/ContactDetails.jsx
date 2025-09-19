@@ -1,6 +1,7 @@
 import React from "react";
 import AnimatedText from "../Common/AnimatedText";
 import InfiniteScrollText from "../Common/InfiniteScrollText";
+import CustomLink from "../Common/CustomLink";
 
 const ContactDetails = () => {
   return (
@@ -23,12 +24,18 @@ const ContactDetails = () => {
 
           <AnimatedText>
             <p>Call Us</p>
-            <h5>970.413.4265</h5>
+            <h5>
+              <CustomLink href='tel:9704134265'>970.413.4265</CustomLink>
+            </h5>
 
             <br />
 
             <p>Email Us</p>
-            <h5>info@compasspeakbuilders.com</h5>
+            <h5>
+              <CustomLink href='mailto:info@compasspeakbuilders.com?subject=Project%20from%20CompassPeakBuilders'>
+                info@compasspeakbuilders.com
+              </CustomLink>
+            </h5>
 
             <br />
 
