@@ -17,6 +17,8 @@ import {
 } from "@/app/Utils/images";
 import NumberFlow from "@number-flow/react";
 import AnimatedBlock from "./AnimatedBlock";
+import { routes } from "@/app/Utils/routes";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(CustomEase);
 CustomEase.create("hop", transitionProps.ease7);
@@ -46,6 +48,7 @@ const preloadImages = (paths) =>
   );
 
 export default function PreLoaderProvider({ children }) {
+  const router = useRouter();
   const preloaderRef = useRef(null);
 
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -92,6 +95,15 @@ export default function PreLoaderProvider({ children }) {
     };
 
     loadImages();
+  }, []);
+
+  // Prefetch important routes
+  useEffect(() => {
+    [routes.HOME, routes.ABOUT, routes.SERVICES, routes.CONTACT].forEach(
+      (path) => {
+        router.prefetch(path);
+      }
+    );
   }, []);
 
   useEffect(() => {

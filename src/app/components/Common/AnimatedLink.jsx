@@ -1,10 +1,9 @@
 "use client";
 
 import { useTransitionRouter } from "next-view-transitions";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { scrollToSection } from "./scrollToSection";
 import CustomLink from "./CustomLink";
-import { useEffect } from "react";
 
 export const transitionProps = {
   from: "inset(100% 0% 0% 0%)",
@@ -85,11 +84,11 @@ const AnimatedLink = ({
 }) => {
   const transitionRouter = useTransitionRouter();
   const pathname = usePathname();
-  const router = useRouter(); // has prefetch()
+  // const router = useRouter(); // has prefetch()
 
-  useEffect(() => {
-    if (href) router.prefetch(href);
-  }, [href, router]);
+  // useEffect(() => {
+  //   if (href) router.prefetch(href);
+  // }, [href, router]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -118,6 +117,7 @@ const AnimatedLink = ({
     );
   }
 
+  // TODO: ⚠️ very IMPORTANT, add prefetching in aember as well
   // TODO: ⚠️ very IMPORTANT, use LINK or prefetch because working very slow on dep version
 
   return (
