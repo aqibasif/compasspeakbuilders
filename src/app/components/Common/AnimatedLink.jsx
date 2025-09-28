@@ -1,9 +1,10 @@
 "use client";
 
 import { useTransitionRouter } from "next-view-transitions";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { scrollToSection } from "./scrollToSection";
 import CustomLink from "./CustomLink";
+import { useEffect } from "react";
 
 export const transitionProps = {
   from: "inset(100% 0% 0% 0%)",
@@ -82,8 +83,13 @@ const AnimatedLink = ({
   onClick,
   showCustomLink = false,
 }) => {
-  const router = useTransitionRouter();
+  const transitionRouter = useTransitionRouter();
   const pathname = usePathname();
+  const router = useRouter(); // has prefetch()
+
+  useEffect(() => {
+    if (href) router.prefetch(href);
+  }, [href, router]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -94,7 +100,7 @@ const AnimatedLink = ({
 
     const sectionId = href.split("#")[1];
 
-    router.push(href, {
+    transitionRouter.push(href, {
       onTransitionReady: () => {
         slideInOut();
         if (sectionId) scrollToSection(sectionId);
@@ -111,6 +117,8 @@ const AnimatedLink = ({
       </CustomLink>
     );
   }
+
+  // TODO: ⚠️ very IMPORTANT, use LINK or prefetch because working very slow on dep version
 
   return (
     <a onClick={handleClick} className={className}>
