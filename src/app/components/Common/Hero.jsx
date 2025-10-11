@@ -9,6 +9,7 @@ import AnimatedBlock from "./AnimatedBlock";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import AnimatedLink from "./AnimatedLink";
 
 const RenderSubHeadings = ({ subHeading }) => {
   if (typeof subHeading === "string" && !!subHeading) {
@@ -43,9 +44,8 @@ const Hero = ({
       gsap.set(".hero-img", { scale: 1.25 });
 
       gsap.to(".hero-img", {
-        delay: 0.01,
         scale: 1,
-        duration: 2.55,
+        duration: 2.6,
         ease: "power4.out",
       });
 
@@ -106,38 +106,52 @@ const Hero = ({
         <AnimatedText animateOnScroll={false} byChar delay={0.45}>
           <h1>{heading}</h1>
         </AnimatedText>
+        {isHomePageHero && (
+          <AnimatedBlock animateOnScroll={false} delay={0.6}>
+            <Button
+              text="Let's Get Started"
+              icon={<MdOutlineArrowOutward />}
+              route={routes.CONTACT}
+            />
+          </AnimatedBlock>
+        )}
 
         {isHomePageHero && (
           <div className='hero-buttons'>
-            <AnimatedBlock animateOnScroll={false} delay={0.6}>
-              <Button
-                text="Let's Get Started"
-                icon={<MdOutlineArrowOutward />}
-                route={routes.CONTACT}
-              />
-            </AnimatedBlock>
-
             <div className='sections-buttons'>
               <AnimatedBlock animateOnScroll={false} delay={0.65}>
-                <Button
-                  variant={2}
-                  text='Custom Homes'
-                  route={routes.SERVICES + "/#custom-homes"}
-                />
+                <AnimatedLink
+                  showCustomLink
+                  href={routes.SERVICES + "/#custom-homes"}
+                >
+                  <p>Custom Homes</p>
+                </AnimatedLink>
               </AnimatedBlock>
+
               <AnimatedBlock animateOnScroll={false} delay={0.7}>
-                <Button
-                  variant={2}
-                  text='Remodel'
-                  route={routes.SERVICES + "/#remodel"}
-                />
+                <div className='hero-line' />
               </AnimatedBlock>
+
+              <AnimatedBlock animateOnScroll={false} delay={0.7}>
+                <AnimatedLink
+                  showCustomLink
+                  href={routes.SERVICES + "/#remodel"}
+                >
+                  <p>Remodel</p>
+                </AnimatedLink>
+              </AnimatedBlock>
+
               <AnimatedBlock animateOnScroll={false} delay={0.75}>
-                <Button
-                  variant={2}
-                  text='Home Care'
-                  route={routes.SERVICES + "/#home-care"}
-                />
+                <div className='hero-line' />
+              </AnimatedBlock>
+
+              <AnimatedBlock animateOnScroll={false} delay={0.75}>
+                <AnimatedLink
+                  showCustomLink
+                  href={routes.SERVICES + "/#home-care"}
+                >
+                  <p>Home Care</p>
+                </AnimatedLink>
               </AnimatedBlock>
             </div>
           </div>

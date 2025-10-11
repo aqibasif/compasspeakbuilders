@@ -21,11 +21,11 @@ const Navbar = () => {
         <AnimatedLink showCustomLink href={routes.HOME}>
           Home
         </AnimatedLink>
-        <AnimatedLink showCustomLink href={routes.ABOUT}>
-          About
-        </AnimatedLink>
         <AnimatedLink showCustomLink href={routes.SERVICES}>
           Services
+        </AnimatedLink>
+        <AnimatedLink showCustomLink href={routes.ABOUT}>
+          About
         </AnimatedLink>
         <AnimatedLink showCustomLink href={routes.CONTACT}>
           Contact

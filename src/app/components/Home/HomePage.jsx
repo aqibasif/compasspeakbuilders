@@ -3,6 +3,7 @@ import Hero from "../Common/Hero";
 import ShortAbout from "./ShortAbout";
 import CustomTestimonials from "./CustomTestimonials";
 import PageLayout from "../PageLayout/PageLayout";
+import TestimonialBlock from "./TestimonialsBlock";
 
 export default function HomePage() {
   return (
@@ -17,7 +18,8 @@ export default function HomePage() {
         ]}
       />
       <ShortAbout />
-      <CustomTestimonials />
+      <TestimonialBlock />
+      {/* <CustomTestimonials /> */}
     </PageLayout>
   );
 }

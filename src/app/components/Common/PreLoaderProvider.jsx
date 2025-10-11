@@ -57,15 +57,16 @@ export default function PreLoaderProvider({ children }) {
   const [animationDone, setAnimationDone] = useState(false);
   const [renderChildren, setRenderChildren] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [logoLoaded, setLogoLoaded] = useState(false);
 
   // load fonts
   useEffect(() => {
     const loadFonts = async () => {
       try {
         const fontFamilies = {
-          NeueMontreal: { weight: 400 },
-          NeueMontreal: { weight: 500 },
-          NeueMontreal: { weight: 600 },
+          Inter: { weight: 400 },
+          Inter: { weight: 500 },
+          Inter: { weight: 600 },
         };
         const observers = Object.entries(fontFamilies).map(
           ([family, options]) =>
@@ -185,11 +186,50 @@ export default function PreLoaderProvider({ children }) {
                   className='progress-bar'
                   style={{ transform: `scaleX(${progress / 100})` }}
                 />
-                <div className='loader-numbering'>
+
+                {/* 👇 Your logo with fade loop */}
+
+                {/* <img
+                  className={`loader-logo ${
+                    logoLoaded && !animationDone
+                      ? "visible-img"
+                      : logoLoaded && animationDone
+                      ? "loading-done"
+                      : ""
+                    // logoLoaded ? "visible-img" : ""
+                  }`}
+                  src={Logo}
+                  alt='logo'
+                  onLoad={() => setLogoLoaded(true)}
+                /> */}
+
+                <div
+                  className={`logo-progress-wrapper ${
+                    logoLoaded ? "visible-logo-wrapper" : ""
+                  }`}
+                >
+                  <img
+                    src={Logo}
+                    alt='logo'
+                    className={`logo-base`}
+                    onLoad={() => setLogoLoaded(true)}
+                  />
+                  <div
+                    className='logo-fill'
+                    style={{
+                      clipPath: `inset(0 ${100 - progress}% 0 0)`,
+                      opacity: 0.3 + (progress / 100) * 0.7, // 0.3 → 1 based on progress
+                    }}
+                  >
+                    <img src={Logo} alt='logo fill' />
+                  </div>
+                </div>
+
+                {/* <div className='loader-numbering'>
                   <AnimatedBlock animateOnScroll={false}>
                     <NumberFlow value={progress} trend={0} />
                   </AnimatedBlock>
-                </div>
+                </div> */}
               </>
             )}
           </div>

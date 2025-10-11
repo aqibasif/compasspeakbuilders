@@ -1,10 +1,3 @@
-import {
-  AboutBanner,
-  ContactBanner,
-  HomeBanner,
-  ServicesBanner,
-} from "./Utils/images";
-
 export const testimonials = [
   {
     name: "Steven and Sheryl D.",
@@ -19,58 +12,15 @@ export const testimonials = [
       "Patrick consistently went above our expectations! Communication was clear, he fought for our budget and our hearts desires (even when those two conflicted), and we just always felt like he had personal ownership over the finished product. We didn’t feel like he was ever just trying to get the job “done”, he always cared above and beyond to do the job with excellence and leave no trace of any issue.",
   },
   {
-    name: "Sarah Johnson",
-    role: "Homeowner",
+    name: "Kathy W.",
+    role: "Dacono, CO",
     content:
-      "The team at Construction Co. transformed our outdated kitchen into a modern masterpiece. Their attention to detail and professionalism exceeded our expectations.",
+      "I could not have been more pleased with my entire homebuilding experience, and I wholeheartedly recommend Compass Peak as a builder who truly delivers. Throughout the building process, they were professional, attentive, and ensured everything ran smoothly and on schedule. They managed to stay on  even with design changes along the way. After I moved in, their commitment didn't end. Any minor issues that arose were promptly addressed, and they ensured everything was up to my expectations. When you hire Compass Peak you hire a capable company you can trust.",
   },
   {
-    name: "Michael Chen",
-    role: "Business Owner",
+    name: "Gary E.",
+    role: "Fort Collins, CO",
     content:
-      "We hired them for a commercial remodel and were impressed with their efficiency and quality of work. Completed ahead of schedule with no issues.",
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Real Estate Developer",
-    content:
-      "I've worked with many construction firms, but their commitment to quality and communication sets them apart. Will definitely use them for future projects.",
-  },
-  {
-    name: "James Wilson",
-    role: "Property Manager",
-    content:
-      "Their home care maintenance service has been invaluable. Regular inspections have helped us catch issues early, saving thousands in potential repairs.",
-  },
-];
-
-export const NavItems = [
-  {
-    label: "Home",
-    bgColor: "#cececeac",
-    textColor: "#FFFFFF",
-    href: "/",
-    img: HomeBanner,
-  },
-  {
-    label: "Services",
-    bgColor: "#cececeac",
-    textColor: "#FFFFFF",
-    href: "/services",
-    img: ServicesBanner,
-  },
-  {
-    label: "About",
-    bgColor: "#cececeac",
-    textColor: "#FFFFFF",
-    href: "/about-compass-peak-builders",
-    img: AboutBanner,
-  },
-  {
-    label: "Contact",
-    bgColor: "#cececeac",
-    textColor: "#FFFFFF",
-    href: "/contact",
-    img: ContactBanner,
+      "We thoroughly enjoyed and appreciated Compass Peak’s expertise in our remodel project. They were professional, approachable and very transparent from start to finish. These days it’s challenging to find a “Contractor” with genuine integrity, but Compass Peak is that company. We highly recommend Compass Peak for any of your remodel or new construction projects.",
   },
 ];

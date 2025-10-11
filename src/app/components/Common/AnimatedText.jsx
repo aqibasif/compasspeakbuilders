@@ -88,7 +88,7 @@ const AnimatedText = ({
         scrollTrigger: animateOnScroll
           ? {
               trigger: containerRef.current,
-              start: "top 75%",
+              start: "top 90%",
               // start: "top 90%",
               toggleActions: "play none none reverse",
               // end: "bottom top", // 👈 when element completely leaves viewport

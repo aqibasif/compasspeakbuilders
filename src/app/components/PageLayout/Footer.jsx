@@ -18,11 +18,11 @@ const Footer = () => {
         ".footer-content",
         {
           y: "-60%",
-          filter: "blur(3px)",
+          // filter: "blur(3px)",
         },
         {
           y: "0%",
-          filter: "blur(0px)",
+          // filter: "blur(0px)",
           ease: "none",
           scrollTrigger: {
             trigger: footerRef.current,
@@ -66,16 +66,16 @@ const Footer = () => {
     <footer ref={footerRef}>
       <div className='footer-content'>
         <p>COMPASS PEAK BUILDERS</p>
-        <p>
+        <p className='address'>
           PO BOX 63
           <br />
           TIMNATH, CO 80547
           <br />
           970.413.4265
         </p>
-        <p>INFO@COMPASSPEAKBUILDERS.COM</p>
+        <p className='email'>INFO@COMPASSPEAKBUILDERS.COM</p>
 
-        <p className='copyright'>© 2025 Compass Peak Builders</p>
+        <p className='copyright'>Copyright © 2025 Compass Peak Builders</p>
       </div>
     </footer>
   );

@@ -41,39 +41,34 @@ const services = [
 
 const ServiceCard = ({ service, index }) => {
   return (
-    <div id={service.id} className='service-card'>
-      <AnimatedText byChar>
+    <div
+      id={service.id}
+      className={`service-card ${index % 2 === 0 ? "alternate-card" : ""}`}
+    >
+      {/* <AnimatedText byChar>
         <h1>00{index}</h1>
-      </AnimatedText>
+      </AnimatedText> */}
 
-      <div className='service-card-content'>
+      {/* <div className='service-card-content'> */}
+      <div className='service-card-text'>
         <AnimatedText>
           <h3>{service.title}</h3>
-          {/* </AnimatedText> */}
-          <img
-            className='service-image'
-            src={service.image}
-            alt={service.title}
-          />
-          {/* <Image
-            className='service-image'
-            src={service.image}
-            alt={service.title}
-            width={1000}
-            height={1000}
-          /> */}
-          {/* <ParallaxImage // TODO: LOOK INTO THIS ISSUE
-          multiplier={0.15}
-          className='service-image'
-          src={service.image}
-          alt={service.title}
-        /> */}
-          {/* <AnimatedText> */}
+        </AnimatedText>
 
-          {/* // TODO issue of footer on contact page */}
+        <AnimatedText>
           <p>{service.content}</p>
         </AnimatedText>
       </div>
+
+      {/* <img className='service-image' src={service.image} alt={service.title} /> */}
+
+      <ParallaxImage // TODO: LOOK INTO THIS ISSUE
+        multiplier={0.15}
+        className='service-image'
+        src={service.image}
+        alt={service.title}
+      />
+      {/* </div> */}
     </div>
   );
 };
@@ -81,61 +76,61 @@ const ServiceCard = ({ service, index }) => {
 const ServicesBlock = () => {
   const container = useRef(null);
 
-  useGSAP(
-    () => {
-      const stickyCards = document.querySelectorAll(".service-card");
+  // useGSAP(
+  //   () => {
+  //     const stickyCards = document.querySelectorAll(".service-card");
 
-      stickyCards.forEach((card, index) => {
-        if (index < stickyCards.length - 1) {
-          ScrollTrigger.create({
-            trigger: card,
-            start: "top top",
-            endTrigger: stickyCards[stickyCards.length - 1],
-            end: "top top",
-            pin: true,
-            pinSpacing: false, // TODO: copy after logic
-          });
-        }
+  //     stickyCards.forEach((card, index) => {
+  //       if (index < stickyCards.length - 1) {
+  //         ScrollTrigger.create({
+  //           trigger: card,
+  //           start: "top top",
+  //           endTrigger: stickyCards[stickyCards.length - 1],
+  //           end: "top top",
+  //           pin: true,
+  //           pinSpacing: false, // TODO: copy after logic
+  //         });
+  //       }
 
-        if (index < stickyCards.length - 1) {
-          ScrollTrigger.create({
-            trigger: stickyCards[index + 1],
-            start: "top bottom",
-            end: "top top",
-            onUpdate: (self) => {
-              const progress = self.progress;
-              const scale = 1 - progress * 0.25;
-              const rotation = (index % 2 === 0 ? 5 : -5) * progress;
-              const afterOpacity =
-                index === 0
-                  ? 1 - progress < 0.5
-                    ? 0.5
-                    : 1 - progress
-                  : 1 - progress < 0.7
-                  ? 0.7
-                  : 1 - progress;
+  //       if (index < stickyCards.length - 1) {
+  //         ScrollTrigger.create({
+  //           trigger: stickyCards[index + 1],
+  //           start: "top bottom",
+  //           end: "top top",
+  //           onUpdate: (self) => {
+  //             const progress = self.progress;
+  //             const scale = 1 - progress * 0.25;
+  //             const rotation = (index % 2 === 0 ? 5 : -5) * progress;
+  //             const afterOpacity =
+  //               index === 0
+  //                 ? 1 - progress < 0.5
+  //                   ? 0.5
+  //                   : 1 - progress
+  //                 : 1 - progress < 0.7
+  //                 ? 0.7
+  //                 : 1 - progress;
 
-              gsap.set(card, {
-                scale: scale,
-                rotation: rotation,
-                filter: `brightness(${afterOpacity})`,
-                // filter: `brightness(${afterOpacity}) blur(${
-                //   progress * 4
-                // }px)`,
-                "--after-opacity": afterOpacity,
-              });
-            },
-          });
-        }
-      });
-    },
-    { scope: container }
-  );
+  //             gsap.set(card, {
+  //               scale: scale,
+  //               rotation: rotation,
+  //               filter: `brightness(${afterOpacity})`,
+  //               // filter: `brightness(${afterOpacity}) blur(${
+  //               //   progress * 4
+  //               // }px)`,
+  //               "--after-opacity": afterOpacity,
+  //             });
+  //           },
+  //         });
+  //       }
+  //     });
+  //   },
+  //   { scope: container }
+  // );
 
   return (
     <div className='services-block'>
       {services.map((service, index) => (
-        <ServiceCard key={index} service={service} index={index + 1} />
+        <ServiceCard key={index} service={service} index={index} />
       ))}
     </div>
   );

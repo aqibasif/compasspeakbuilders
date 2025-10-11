@@ -28,7 +28,7 @@ const AnimatedBlock = ({ children, delay = 0, animateOnScroll = true }) => {
         scrollTrigger: animateOnScroll
           ? {
               trigger: elementRef.current,
-              start: isMobile ? "top 75%" : "top 75%",
+              start: "top 90%",
               toggleActions: "play none none reverse",
               invalidateOnRefresh: true,
             }
