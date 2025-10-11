@@ -7,6 +7,7 @@ import {
   IoMailOutline,
   IoLocationOutline,
 } from "react-icons/io5";
+import AnimatedBlock from "../Common/AnimatedBlock";
 
 const ContactDetails = () => {
   return (
@@ -28,9 +29,11 @@ const ContactDetails = () => {
 
         <div className='contact-details'>
           <div className='contact-block'>
-            <div className='contact-icon'>
-              <IoCallOutline />
-            </div>
+            <AnimatedBlock>
+              <div className='contact-icon'>
+                <IoCallOutline />
+              </div>
+            </AnimatedBlock>
             <div className='contact-text-block'>
               <AnimatedText>
                 <p>Call Us</p>
@@ -42,9 +45,11 @@ const ContactDetails = () => {
           </div>
 
           <div className='contact-block'>
-            <div className='contact-icon'>
-              <IoMailOutline />
-            </div>
+            <AnimatedBlock>
+              <div className='contact-icon'>
+                <IoMailOutline />
+              </div>
+            </AnimatedBlock>
             <div className='contact-text-block'>
               <AnimatedText>
                 <p>Email Us</p>
@@ -58,9 +63,11 @@ const ContactDetails = () => {
           </div>
 
           <div className='contact-block'>
-            <div className='contact-icon'>
-              <IoLocationOutline />
-            </div>
+            <AnimatedBlock>
+              <div className='contact-icon'>
+                <IoLocationOutline />
+              </div>
+            </AnimatedBlock>
             <div className='contact-text-block'>
               <AnimatedText>
                 <p>Mailing Address</p>
