@@ -216,10 +216,7 @@ export default function PreLoaderProvider({ children }) {
                   />
                   <div
                     className='logo-fill'
-                    style={{
-                      clipPath: `inset(0 ${100 - progress}% 0 0)`,
-                      opacity: 0.3 + (progress / 100) * 0.7, // 0.3 → 1 based on progress
-                    }}
+                    style={{ clipPath: `inset(0 ${100 - progress}% 0 0)` }}
                   >
                     <img src={Logo} alt='logo fill' />
                   </div>

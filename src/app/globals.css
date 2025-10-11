@@ -1846,9 +1846,8 @@ a {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  transition: clip-path cubic-bezier(0.65, 0.05, 0.36, 1) 0.8s,
-    opacity cubic-bezier(0.65, 0.05, 0.36, 1) 0.8s;
-  will-change: clip-path, opacity;
+  transition: clip-path cubic-bezier(0.65, 0.05, 0.36, 1) 0.8s;
+  will-change: clip-path;
 }
 
 .logo-fill img {
