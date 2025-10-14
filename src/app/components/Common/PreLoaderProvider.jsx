@@ -107,63 +107,95 @@ export default function PreLoaderProvider({ children }) {
     );
   }, []);
 
+  // useEffect(() => {
+  //   if (!fontsLoaded) return;
+
+  //   let interval;
+
+  //   // if (!imagesLoaded && progress < 90) {
+  //   //   // Case 1: Images not yet loaded → slow progress
+  //   //   interval = setInterval(() => {
+  //   //     setProgress((prev) => {
+  //   //       if (prev >= 90) {
+  //   //         clearInterval(interval);
+  //   //         return 90;
+  //   //       }
+  //   //       return prev + 3;
+  //   //     });
+  //   //   }, 700);
+  //   // } else if (imagesLoaded && progress <= 51) {
+  //   //   interval = setInterval(() => {
+  //   //     setProgress((prev) => {
+  //   //       if (prev >= 90) {
+  //   //         clearInterval(interval);
+  //   //         return 90;
+  //   //       }
+  //   //       return prev + 40;
+  //   //     });
+  //   //   }, 700);
+  //   // }
+
+  //   if (!imagesLoaded && progress < 80) {
+  //     // Case 1: Images not yet loaded → slow progress
+  //     interval = setInterval(() => {
+  //       setProgress((prev) => {
+  //         if (prev >= 80) {
+  //           clearInterval(interval);
+  //           return 80;
+  //         }
+  //         return prev + 1;
+  //       });
+  //     }, 350);
+  //   } else if (imagesLoaded && progress <= 80) {
+  //     interval = setInterval(() => {
+  //       setProgress(100);
+  //     }, 350);
+  //   }
+  //   //  else if (imagesLoaded && progress <= 50) {
+  //   //   interval = setInterval(() => {
+  //   //     setProgress(50);
+  //   //   }, 350);
+  //   // }
+
+  //   return () => clearInterval(interval);
+  // }, [fontsLoaded, imagesLoaded, progress]);
+
   useEffect(() => {
     if (!fontsLoaded) return;
-
     let interval;
 
-    // if (!imagesLoaded && progress < 90) {
-    //   // Case 1: Images not yet loaded → slow progress
-    //   interval = setInterval(() => {
-    //     setProgress((prev) => {
-    //       if (prev >= 90) {
-    //         clearInterval(interval);
-    //         return 90;
-    //       }
-    //       return prev + 3;
-    //     });
-    //   }, 700);
-    // } else if (imagesLoaded && progress <= 51) {
-    //   interval = setInterval(() => {
-    //     setProgress((prev) => {
-    //       if (prev >= 90) {
-    //         clearInterval(interval);
-    //         return 90;
-    //       }
-    //       return prev + 40;
-    //     });
-    //   }, 700);
-    // }
-
-    if (!imagesLoaded && progress < 50) {
-      // Case 1: Images not yet loaded → slow progress
+    if (!imagesLoaded) {
+      // Slowly go up to 80%
       interval = setInterval(() => {
         setProgress((prev) => {
-          if (prev >= 50) {
+          if (prev >= 80) {
             clearInterval(interval);
-            return 50;
+            return 80;
           }
           return prev + 1;
         });
       }, 350);
-    } else if (imagesLoaded && progress <= 50) {
-      interval = setInterval(() => {
-        setProgress(50);
-      }, 350);
+    } else {
+      // Once images are done, smoothly move to 100%
+      clearInterval(interval);
+      const timeout = setTimeout(() => {
+        setProgress(100);
+      }, 350); // a short delay feels smoother
+      return () => clearTimeout(timeout);
     }
 
     return () => clearInterval(interval);
-  }, [fontsLoaded, imagesLoaded, progress]);
+  }, [fontsLoaded, imagesLoaded]);
 
   // when images loaded → jump to 100 after 2s
-  useEffect(() => {
-    if (imagesLoaded) {
-      const timeout = setTimeout(() => {
-        setProgress(100);
-      }, 800);
-      return () => clearTimeout(timeout);
-    }
-  }, [imagesLoaded, progress]);
+  // useEffect(() => {
+  //   if (imagesLoaded) {
+  //     const timeout = setTimeout(() => {
+  //       setProgress(100);
+  //     }, 350);
+  //     return () => clearTimeout(timeout);
+  //   }
+  // }, [imagesLoaded, progress]);
 
   // when progress hits 100 → trigger after 1s
   useEffect(() => {
@@ -171,7 +203,8 @@ export default function PreLoaderProvider({ children }) {
       const timeout = setTimeout(() => {
         setAnimationDone(true);
         setRenderChildren(true);
-      }, 640);
+        // }, 0);
+      }, 760);
       return () => clearTimeout(timeout);
     }
   }, [progress]);
