@@ -45,6 +45,7 @@ export default function RootLayout({ children }) {
             <ReactLenis
               root
               // options={{   lerp, }}
+              // options={{ wheelMultiplier: 1.1 }}
             />
             {children}
           </PreLoaderProvider>

@@ -112,27 +112,44 @@ export default function PreLoaderProvider({ children }) {
 
     let interval;
 
-    if (!imagesLoaded && progress < 90) {
+    // if (!imagesLoaded && progress < 90) {
+    //   // Case 1: Images not yet loaded → slow progress
+    //   interval = setInterval(() => {
+    //     setProgress((prev) => {
+    //       if (prev >= 90) {
+    //         clearInterval(interval);
+    //         return 90;
+    //       }
+    //       return prev + 3;
+    //     });
+    //   }, 700);
+    // } else if (imagesLoaded && progress <= 51) {
+    //   interval = setInterval(() => {
+    //     setProgress((prev) => {
+    //       if (prev >= 90) {
+    //         clearInterval(interval);
+    //         return 90;
+    //       }
+    //       return prev + 40;
+    //     });
+    //   }, 700);
+    // }
+
+    if (!imagesLoaded && progress < 50) {
       // Case 1: Images not yet loaded → slow progress
       interval = setInterval(() => {
         setProgress((prev) => {
-          if (prev >= 90) {
+          if (prev >= 50) {
             clearInterval(interval);
-            return 90;
+            return 50;
           }
-          return prev + 3;
+          return prev + 1;
         });
-      }, 700);
-    } else if (imagesLoaded && progress <= 51) {
+      }, 350);
+    } else if (imagesLoaded && progress <= 50) {
       interval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 90) {
-            clearInterval(interval);
-            return 90;
-          }
-          return prev + 40;
-        });
-      }, 700);
+        setProgress(50);
+      }, 350);
     }
 
     return () => clearInterval(interval);
@@ -143,7 +160,7 @@ export default function PreLoaderProvider({ children }) {
     if (imagesLoaded) {
       const timeout = setTimeout(() => {
         setProgress(100);
-      }, 1000);
+      }, 800);
       return () => clearTimeout(timeout);
     }
   }, [imagesLoaded, progress]);
@@ -154,7 +171,7 @@ export default function PreLoaderProvider({ children }) {
       const timeout = setTimeout(() => {
         setAnimationDone(true);
         setRenderChildren(true);
-      }, 1000);
+      }, 640);
       return () => clearTimeout(timeout);
     }
   }, [progress]);

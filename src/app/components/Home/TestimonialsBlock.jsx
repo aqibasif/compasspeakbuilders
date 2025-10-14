@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css/navigation";
@@ -9,6 +9,8 @@ import { testimonials } from "@/app/data";
 import AnimatedText from "../Common/AnimatedText";
 
 const TestimonialBlock = () => {
+  const swiperRef = useRef(null);
+
   return (
     <div className='testimonial-block'>
       <AnimatedText>
@@ -21,19 +23,23 @@ const TestimonialBlock = () => {
         <h4>TESTIMONIALS</h4>
       </AnimatedText>
 
-      <div className='testimonial-carousel'>
+      <div
+        className='testimonial-carousel'
+        onMouseEnter={() => swiperRef.current?.autoplay?.stop()}
+        onMouseLeave={() => swiperRef.current?.autoplay?.start()}
+      >
         <Swiper
           modules={[Pagination, Autoplay]}
-          navigation
           pagination={{ clickable: true }}
           spaceBetween={12}
           className='testimonial-carousel-swiper'
           loop
           autoplay={{
-            delay: 2000, // ✅ Change slide every 2 seconds
-            disableOnInteraction: false, // Keeps autoplay running after user interaction
+            delay: 2000,
+            disableOnInteraction: false,
           }}
           speed={450}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
           breakpoints={{
             0: { slidesPerView: 1 },
             768: { slidesPerView: 2 },

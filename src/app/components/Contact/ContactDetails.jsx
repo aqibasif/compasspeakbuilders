@@ -36,10 +36,10 @@ const ContactDetails = () => {
             </AnimatedBlock>
             <div className='contact-text-block'>
               <AnimatedText>
-                <p>Call Us</p>
-                <h5>
+                {/* <p>Call Us</p> */}
+                <h6>
                   <CustomLink href='tel:9704134265'>970.413.4265</CustomLink>
-                </h5>
+                </h6>
               </AnimatedText>
             </div>
           </div>
@@ -52,12 +52,12 @@ const ContactDetails = () => {
             </AnimatedBlock>
             <div className='contact-text-block'>
               <AnimatedText>
-                <p>Email Us</p>
-                <h5>
+                {/* <p>Email Us</p> */}
+                <h6>
                   <CustomLink href='mailto:info@compasspeakbuilders.com?subject=Project%20from%20CompassPeakBuilders'>
                     info@compasspeakbuilders.com
                   </CustomLink>
-                </h5>
+                </h6>
               </AnimatedText>
             </div>
           </div>
@@ -70,8 +70,8 @@ const ContactDetails = () => {
             </AnimatedBlock>
             <div className='contact-text-block'>
               <AnimatedText>
-                <p>Mailing Address</p>
-                <h5>PO Box 63, Timnath, CO 80547</h5>
+                {/* <p>Mailing Address</p> */}
+                <h6>PO Box 63, Timnath, CO 80547</h6>
               </AnimatedText>
             </div>
           </div>

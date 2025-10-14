@@ -45,11 +45,6 @@ const ServiceCard = ({ service, index }) => {
       id={service.id}
       className={`service-card ${index % 2 === 0 ? "alternate-card" : ""}`}
     >
-      {/* <AnimatedText byChar>
-        <h1>00{index}</h1>
-      </AnimatedText> */}
-
-      {/* <div className='service-card-content'> */}
       <div className='service-card-text'>
         <AnimatedText>
           <h3>{service.title}</h3>
@@ -60,15 +55,12 @@ const ServiceCard = ({ service, index }) => {
         </AnimatedText>
       </div>
 
-      {/* <img className='service-image' src={service.image} alt={service.title} /> */}
-
       <ParallaxImage // TODO: LOOK INTO THIS ISSUE
         multiplier={0.15}
         className='service-image'
         src={service.image}
         alt={service.title}
       />
-      {/* </div> */}
     </div>
   );
 };
