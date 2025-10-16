@@ -851,6 +851,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: max-content;
+    overflow: hidden;
 
     & .service-image {
       height: 100% !important;
