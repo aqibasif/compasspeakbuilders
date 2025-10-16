@@ -1,15 +1,11 @@
-"use client";
-
 import {
   CustomHomesImage,
   HomeCareImage,
   RemodelImage,
 } from "@/app/Utils/images";
-import React, { useRef } from "react";
+import React from "react";
 import AnimatedText from "../Common/AnimatedText";
 import ParallaxImage from "../Common/ParallaxImage";
-import Image from "next/image";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -55,7 +51,7 @@ const ServiceCard = ({ service, index }) => {
         </AnimatedText>
       </div>
 
-      <ParallaxImage // TODO: LOOK INTO THIS ISSUE
+      <ParallaxImage
         multiplier={0.15}
         className='service-image'
         src={service.image}
@@ -66,59 +62,6 @@ const ServiceCard = ({ service, index }) => {
 };
 
 const ServicesBlock = () => {
-  const container = useRef(null);
-
-  // useGSAP(
-  //   () => {
-  //     const stickyCards = document.querySelectorAll(".service-card");
-
-  //     stickyCards.forEach((card, index) => {
-  //       if (index < stickyCards.length - 1) {
-  //         ScrollTrigger.create({
-  //           trigger: card,
-  //           start: "top top",
-  //           endTrigger: stickyCards[stickyCards.length - 1],
-  //           end: "top top",
-  //           pin: true,
-  //           pinSpacing: false, // TODO: copy after logic
-  //         });
-  //       }
-
-  //       if (index < stickyCards.length - 1) {
-  //         ScrollTrigger.create({
-  //           trigger: stickyCards[index + 1],
-  //           start: "top bottom",
-  //           end: "top top",
-  //           onUpdate: (self) => {
-  //             const progress = self.progress;
-  //             const scale = 1 - progress * 0.25;
-  //             const rotation = (index % 2 === 0 ? 5 : -5) * progress;
-  //             const afterOpacity =
-  //               index === 0
-  //                 ? 1 - progress < 0.5
-  //                   ? 0.5
-  //                   : 1 - progress
-  //                 : 1 - progress < 0.7
-  //                 ? 0.7
-  //                 : 1 - progress;
-
-  //             gsap.set(card, {
-  //               scale: scale,
-  //               rotation: rotation,
-  //               filter: `brightness(${afterOpacity})`,
-  //               // filter: `brightness(${afterOpacity}) blur(${
-  //               //   progress * 4
-  //               // }px)`,
-  //               "--after-opacity": afterOpacity,
-  //             });
-  //           },
-  //         });
-  //       }
-  //     });
-  //   },
-  //   { scope: container }
-  // );
-
   return (
     <div className='services-block'>
       {services.map((service, index) => (
