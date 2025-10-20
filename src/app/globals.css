@@ -888,8 +888,8 @@ footer {
 
       & .service-image {
         order: 2;
-        height: 40vh;
-        max-height: 40vh;
+        height: 40vh !important;
+        max-height: 40vh !important;
         width: 100%;
       }
 
