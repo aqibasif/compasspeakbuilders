@@ -15,8 +15,6 @@ import {
   CustomHomesImage,
   RemodelImage,
 } from "@/app/Utils/images";
-import NumberFlow from "@number-flow/react";
-import AnimatedBlock from "./AnimatedBlock";
 import { routes } from "@/app/Utils/routes";
 import { useRouter } from "next/navigation";
 
@@ -172,9 +170,9 @@ export default function PreLoaderProvider({ children }) {
             clearInterval(interval);
             return 80;
           }
-          return prev + 1;
+          return prev + 2;
         });
-      }, 350);
+      }, 800);
     } else {
       // Once images are done, smoothly move to 100%
       clearInterval(interval);

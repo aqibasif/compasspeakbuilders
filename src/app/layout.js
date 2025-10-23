@@ -4,28 +4,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import PreLoaderProvider from "./components/Common/PreLoaderProvider";
 
-// const NeueMontreal = localFont({
-//   src: [
-//     {
-//       path: "./fonts/NeueMontreal-Regular.otf",
-//       weight: "400",
-//       style: "normal",
-//     },
-//     {
-//       path: "./fonts/NeueMontreal-Medium.otf",
-//       weight: "500",
-//       style: "normal",
-//     },
-//     {
-//       path: "./fonts/NeueMontreal-Bold.otf",
-//       weight: "600",
-//       style: "normal",
-//     },
-//   ],
-//   variable: "--font-neue-montreal",
-//   display: "swap",
-// });
-
 const Inter = localFont({
   src: [{ path: "./fonts/Inter.ttf" }],
 });
@@ -42,11 +20,7 @@ export default function RootLayout({ children }) {
       <html lang='en' className={Inter.className}>
         <body>
           <PreLoaderProvider>
-            <ReactLenis
-              root
-              // options={{   lerp, }}
-              // options={{ wheelMultiplier: 1.1 }}
-            />
+            <ReactLenis root />
             {children}
           </PreLoaderProvider>
         </body>
